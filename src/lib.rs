@@ -1,3 +1,3 @@
-pub mod device;
 mod api;
+pub mod device;
 pub use device::*;

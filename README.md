@@ -9,7 +9,7 @@ use esphome::Connection;
 use std::net::TcpStream;
 
 let mut stream = TcpStream::connect(opt.address)?;
-	let mut write_stream = stream.try_clone()?;
+let mut write_stream = stream.try_clone()?;
 let connection = Connection::new(&mut stream, &mut write_stream);
 let device = connection.connect()?;
 println!("Connected to {}", device.server_info());

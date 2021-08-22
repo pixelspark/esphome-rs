@@ -1,5 +1,5 @@
-use std::{error::Error, net::TcpStream};
 use esphome::*;
+use std::{error::Error, net::TcpStream};
 use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]
@@ -9,7 +9,7 @@ struct Opt {
 	address: String,
 
 	#[structopt(short, long)]
-	password: Option<String>
+	password: Option<String>,
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 	let connection = Connection::new(&mut stream, &mut write_stream);
 	let device = connection.connect()?;
 	println!("Connected to {}", device.server_info());
-	
+
 	if let Some(password) = opt.password {
 		let mut ad = device.authenticate(&password)?;
 		println!("Authenticated!");
