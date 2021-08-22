@@ -2,6 +2,9 @@
 name = "esphome"
 version = "0.1.0"
 edition = "2018"
+description = "ESPHome API client for Rust."
+repository = "https://github.com/pixelspark/esphome-rs"
+license = "MIT"
 
 [lib]
 name = "esphome"
