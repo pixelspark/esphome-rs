@@ -12,7 +12,7 @@ path = "src/lib.rs"
 
 [dependencies]
 protobuf = "2"
-thiserror = "*"
+thiserror = "1.0.26"
 num-traits = "0.2"
 num-derive = "0.2"
 
