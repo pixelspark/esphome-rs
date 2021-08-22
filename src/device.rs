@@ -102,7 +102,7 @@ impl<'a> Connection<'a> {
 				received: header.message_type,
 			}));
 		}
-		Ok(self.receive_message_body(&header)?)
+		self.receive_message_body(&header)
 	}
 
 	fn receive_message_body<M>(&mut self, header: &MessageHeader) -> Result<M, Box<dyn Error>>
