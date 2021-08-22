@@ -24,8 +24,17 @@ fn main() -> Result<(), Box<dyn Error>> {
 	println!("Connected to {}", device.server_info());
 	
 	if let Some(password) = opt.password {
-		let _ad = device.authenticate(&password)?;
+		let mut ad = device.authenticate(&password)?;
 		println!("Authenticated!");
+
+		ad.device.ping()?;
+		println!("Pong!");
+
+		println!("Device info={:?}", ad.device_info()?);
+
+		println!("Entities: {:#?}", ad.list_entities()?);
+
+		ad.device.disconnect()?;
 	}
 
 	Ok(())
