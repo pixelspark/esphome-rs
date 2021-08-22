@@ -1,5 +1,9 @@
 use esphome::*;
-use std::{error::Error, net::TcpStream};
+use std::{
+	error::Error,
+	net::TcpStream,
+	time::{Duration, SystemTime, UNIX_EPOCH},
+};
 use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]
@@ -30,9 +34,20 @@ fn main() -> Result<(), Box<dyn Error>> {
 		ad.device.ping()?;
 		println!("Pong!");
 
+		let my_time = (SystemTime::now().duration_since(UNIX_EPOCH)?).as_secs() as u32;
+		println!("Device time: {} our time: {}", ad.get_time()?, my_time);
 		println!("Device info={:?}", ad.device_info()?);
 
-		println!("Entities: {:#?}", ad.list_entities()?);
+		ad.subscribe_states()?;
+		loop {
+			ad.device.ping()?;
+			std::thread::sleep(Duration::from_secs(1));
+
+			let entities = ad.list_entities()?;
+			for e in entities {
+				println!("- {:?}: {:?}", e, ad.device.connection.get_last_state(&e));
+			}
+		}
 
 		ad.device.disconnect()?;
 	}
