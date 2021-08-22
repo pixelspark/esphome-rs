@@ -1,0 +1,18 @@
+[package]
+name = "esphome"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+name = "esphome"
+path = "src/lib.rs"
+
+[dependencies]
+protobuf = "2"
+thiserror = "*"
+
+[dev-dependencies]
+structopt = "0.3"
+
+[build-dependencies]
+protobuf-codegen-pure = "2.3"
