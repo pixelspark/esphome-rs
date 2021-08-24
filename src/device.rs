@@ -18,31 +18,43 @@ pub enum State {
 }
 
 #[derive(Debug)]
-pub struct EntityInfo {
-	name: String,
-	key: u32,
-}
-
-#[derive(Debug)]
 pub struct ExtendedInfo {
 	object_id: String,
 	unique_id: String,
 }
 
 #[derive(Debug)]
-pub enum Entity {
-	BinarySensor(EntityInfo, ExtendedInfo),
-	Camera(EntityInfo, ExtendedInfo),
-	Climate(EntityInfo, ExtendedInfo),
-	Cover(EntityInfo, ExtendedInfo),
-	Fan(EntityInfo, ExtendedInfo),
-	Light(EntityInfo, ExtendedInfo),
-	Number(EntityInfo, ExtendedInfo),
-	Select(EntityInfo, ExtendedInfo),
-	Sensor(EntityInfo, ExtendedInfo),
-	Services(EntityInfo),
-	Switch(EntityInfo, ExtendedInfo),
-	TextSensor(EntityInfo, ExtendedInfo),
+pub struct EntityInfo {
+	name: String,
+	key: u32,
+}
+
+#[derive(Debug)]
+pub struct Entity {
+	info: EntityInfo,
+	kind: EntityKind,
+}
+
+impl Entity {
+	fn new(info: EntityInfo, kind: EntityKind) -> Entity {
+		Entity { info, kind }
+	}
+}
+
+#[derive(Debug)]
+pub enum EntityKind {
+	BinarySensor(ExtendedInfo),
+	Camera(ExtendedInfo),
+	Climate(ExtendedInfo),
+	Cover(ExtendedInfo),
+	Fan(ExtendedInfo),
+	Light(ExtendedInfo),
+	Number(ExtendedInfo),
+	Select(ExtendedInfo),
+	Sensor(ExtendedInfo),
+	Services,
+	Switch(ExtendedInfo),
+	TextSensor(ExtendedInfo),
 }
 
 pub struct Connection<'a> {
@@ -116,21 +128,7 @@ struct MessageHeader {
 
 impl Entity {
 	pub fn key(&self) -> u32 {
-		match self {
-			Entity::BinarySensor(b, _)
-			| Entity::Camera(b, _)
-			| Entity::Climate(b, _)
-			| Entity::Cover(b, _)
-			| Entity::Fan(b, _)
-			| Entity::Light(b, _)
-			| Entity::Number(b, _)
-			| Entity::Select(b, _)
-			| Entity::Sensor(b, _)
-			| Entity::Switch(b, _)
-			| Entity::TextSensor(b, _) => b.key,
-
-			Entity::Services(b) => b.key,
-		}
+		self.info.key
 	}
 }
 
@@ -229,21 +227,18 @@ impl<'a> Connection<'a> {
 			Some(MessageType::SensorStateResponse) => {
 				let ssr: api::SensorStateResponse = self.receive_message_body(&header)?;
 				self.states.insert(ssr.key, State::Measurement(ssr.state));
-				println!("State update {:#?}", self.states);
 				Ok(true)
 			}
 
 			Some(MessageType::BinarySensorStateResponse) => {
 				let ssr: api::BinarySensorStateResponse = self.receive_message_body(&header)?;
 				self.states.insert(ssr.key, State::Binary(ssr.state));
-				println!("State update {:#?}", self.states);
 				Ok(true)
 			}
 
 			Some(MessageType::TextSensorStateResponse) => {
 				let ssr: api::TextSensorStateResponse = self.receive_message_body(&header)?;
 				self.states.insert(ssr.key, State::Text(ssr.state));
-				println!("State update {:#?}", self.states);
 				Ok(true)
 			}
 
@@ -283,8 +278,6 @@ impl<'a> Connection<'a> {
 			// Handle internal messages
 			if !self.process_unsolicited(&header)? {
 				return Ok(header);
-			} else {
-				println!("Skip internal message {:#?}", header);
 			}
 		}
 	}
@@ -470,9 +463,7 @@ impl<'a> AuthenticatedDevice<'a> {
 	}
 
 	pub fn listen(&mut self) -> Result<(), Box<dyn Error>> {
-		let hdr = self.device.connection.receive_message_header()?;
-		println!("Receive header: {:?}", hdr);
-		println!("States: {:#?}", self.device.connection.states);
+		let _hdr = self.device.connection.receive_message_header()?;
 		Ok(())
 	}
 
@@ -498,105 +489,108 @@ impl<'a> AuthenticatedDevice<'a> {
 				Some(MessageType::ListEntitiesSensorResponse) => {
 					let sr: api::ListEntitiesSensorResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Sensor(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Sensor(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesBinarySensorResponse) => {
 					let sr: api::ListEntitiesBinarySensorResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::BinarySensor(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::BinarySensor(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesCoverResponse) => {
 					let sr: api::ListEntitiesCoverResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Cover(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Cover(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesFanResponse) => {
 					let sr: api::ListEntitiesFanResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Fan(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Fan(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesLightResponse) => {
 					let sr: api::ListEntitiesLightResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Light(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Light(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesSwitchResponse) => {
 					let sr: api::ListEntitiesSwitchResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Switch(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Switch(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesTextSensorResponse) => {
 					let sr: api::ListEntitiesTextSensorResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::TextSensor(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::TextSensor(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesCameraResponse) => {
 					let sr: api::ListEntitiesCameraResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Camera(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Camera(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesClimateResponse) => {
 					let sr: api::ListEntitiesClimateResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Climate(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Climate(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesServicesResponse) => {
 					let sr: api::ListEntitiesServicesResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Services(EntityInfo::from(sr)))
+					entities.push(Entity::new(
+						EntityInfo::from(sr.clone()),
+						EntityKind::Services,
+					))
 				}
 
 				Some(MessageType::ListEntitiesSelectResponse) => {
 					let sr: api::ListEntitiesSelectResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Select(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Select(ExtendedInfo::from(sr)),
 					))
 				}
 
 				Some(MessageType::ListEntitiesNumberResponse) => {
 					let sr: api::ListEntitiesNumberResponse =
 						self.device.connection.receive_message_body(&header)?;
-					entities.push(Entity::Number(
+					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
-						ExtendedInfo::from(sr),
+						EntityKind::Number(ExtendedInfo::from(sr)),
 					))
 				}
 
