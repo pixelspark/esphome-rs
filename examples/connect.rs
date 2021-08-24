@@ -19,9 +19,7 @@ struct Opt {
 fn main() -> Result<(), Box<dyn Error>> {
 	let opt = Opt::from_args();
 	let mut stream = TcpStream::connect(opt.address)?;
-
 	let mut write_stream = stream.try_clone()?;
-	//let mut writer = BufWriter::new(&mut write_stream);
 
 	let connection = Connection::new(&mut stream, &mut write_stream);
 	let device = connection.connect()?;
@@ -48,8 +46,6 @@ fn main() -> Result<(), Box<dyn Error>> {
 				println!("- {:?}: {:?}", e, ad.device.connection.get_last_state(&e));
 			}
 		}
-
-		ad.device.disconnect()?;
 	}
 
 	Ok(())
