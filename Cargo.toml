@@ -14,7 +14,7 @@ path = "src/lib.rs"
 protobuf = "2"
 thiserror = "1.0.26"
 num-traits = "0.2"
-num-derive = "0.2"
+num-derive = "0.3"
 
 [dev-dependencies]
 structopt = "0.3"
