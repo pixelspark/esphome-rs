@@ -112,12 +112,12 @@ impl<'a> Connection<'a> {
 	fn process_unsolicited(&mut self, header: &MessageHeader) -> Result<bool, EspHomeError> {
 		match FromPrimitive::from_u32(header.message_type) {
 			Some(MessageType::PingRequest) => {
-				self.receive_message_body::<api::PingRequest>(&header)?;
+				self.receive_message_body::<api::PingRequest>(header)?;
 				self.send_message(MessageType::PingResponse, &api::PingResponse::new())?;
 				Ok(true)
 			}
 			Some(MessageType::DisconnectRequest) => {
-				self.receive_message_body::<api::DisconnectRequest>(&header)?;
+				self.receive_message_body::<api::DisconnectRequest>(header)?;
 				self.send_message(
 					MessageType::DisconnectResponse,
 					&api::DisconnectResponse::new(),
@@ -126,7 +126,7 @@ impl<'a> Connection<'a> {
 				Ok(true)
 			}
 			Some(MessageType::GetTimeRequest) => {
-				self.receive_message_body::<api::GetTimeRequest>(&header)?;
+				self.receive_message_body::<api::GetTimeRequest>(header)?;
 				let mut res = api::GetTimeResponse::new();
 				res.epoch_seconds =
 					(SystemTime::now().duration_since(UNIX_EPOCH)?).as_secs() as u32;
@@ -135,19 +135,19 @@ impl<'a> Connection<'a> {
 			}
 
 			Some(MessageType::SensorStateResponse) => {
-				let ssr: api::SensorStateResponse = self.receive_message_body(&header)?;
+				let ssr: api::SensorStateResponse = self.receive_message_body(header)?;
 				self.states.insert(ssr.key, State::Measurement(ssr.state));
 				Ok(true)
 			}
 
 			Some(MessageType::BinarySensorStateResponse) => {
-				let ssr: api::BinarySensorStateResponse = self.receive_message_body(&header)?;
+				let ssr: api::BinarySensorStateResponse = self.receive_message_body(header)?;
 				self.states.insert(ssr.key, State::Binary(ssr.state));
 				Ok(true)
 			}
 
 			Some(MessageType::TextSensorStateResponse) => {
-				let ssr: api::TextSensorStateResponse = self.receive_message_body(&header)?;
+				let ssr: api::TextSensorStateResponse = self.receive_message_body(header)?;
 				self.states.insert(ssr.key, State::Text(ssr.state));
 				Ok(true)
 			}
