@@ -40,6 +40,19 @@ service APIConnection {
   rpc climate_command (ClimateCommandRequest) returns (void) {}
   rpc number_command (NumberCommandRequest) returns (void) {}
   rpc select_command (SelectCommandRequest) returns (void) {}
+  rpc button_command (ButtonCommandRequest) returns (void) {}
+  rpc lock_command (LockCommandRequest) returns (void) {}
+  rpc media_player_command (MediaPlayerCommandRequest) returns (void) {}
+
+  rpc subscribe_bluetooth_le_advertisements(SubscribeBluetoothLEAdvertisementsRequest) returns (void) {}
+  rpc bluetooth_device_request(BluetoothDeviceRequest) returns (void) {}
+  rpc bluetooth_gatt_get_services(BluetoothGATTGetServicesRequest) returns (void) {}
+  rpc bluetooth_gatt_read(BluetoothGATTReadRequest) returns (void) {}
+  rpc bluetooth_gatt_write(BluetoothGATTWriteRequest) returns (void) {}
+  rpc bluetooth_gatt_read_descriptor(BluetoothGATTReadDescriptorRequest) returns (void) {}
+  rpc bluetooth_gatt_write_descriptor(BluetoothGATTWriteDescriptorRequest) returns (void) {}
+  rpc bluetooth_gatt_notify(BluetoothGATTNotifyRequest) returns (void) {}
+  rpc subscribe_bluetooth_connections_free(SubscribeBluetoothConnectionsFreeRequest) returns (BluetoothConnectionsFreeResponse) {}
 }
 
 
@@ -74,6 +87,8 @@ message HelloRequest {
   // Not strictly necessary to send but nice for debugging
   // purposes.
   string client_info = 1;
+  uint32 api_version_major = 2;
+  uint32 api_version_minor = 3;
 }
 
 // Confirmation of successful connection request.
@@ -94,6 +109,9 @@ message HelloResponse {
   // and only exists for debugging/logging purposes.
   // For example "ESPHome v1.10.0 on ESP8266"
   string server_info = 3;
+
+  // The name of the server (App.get_name())
+  string name = 4;
 }
 
 // Message sent at the beginning of each connection to authenticate the client
@@ -182,6 +200,10 @@ message DeviceInfoResponse {
   // The esphome project details if set
   string project_name = 8;
   string project_version = 9;
+
+  uint32 webserver_port = 10;
+
+  uint32 bluetooth_proxy_version = 11;
 }
 
 message ListEntitiesRequest {
@@ -201,6 +223,14 @@ message SubscribeStatesRequest {
   // Empty
 }
 
+// ==================== COMMON =====================
+
+enum EntityCategory {
+  ENTITY_CATEGORY_NONE = 0;
+  ENTITY_CATEGORY_CONFIG = 1;
+  ENTITY_CATEGORY_DIAGNOSTIC = 2;
+}
+
 // ==================== BINARY SENSOR ====================
 message ListEntitiesBinarySensorResponse {
   option (id) = 12;
@@ -215,6 +245,8 @@ message ListEntitiesBinarySensorResponse {
   string device_class = 5;
   bool is_status_binary_sensor = 6;
   bool disabled_by_default = 7;
+  string icon = 8;
+  EntityCategory entity_category = 9;
 }
 message BinarySensorStateResponse {
   option (id) = 21;
@@ -245,6 +277,8 @@ message ListEntitiesCoverResponse {
   bool supports_tilt = 7;
   string device_class = 8;
   bool disabled_by_default = 9;
+  string icon = 10;
+  EntityCategory entity_category = 11;
 }
 
 enum LegacyCoverState {
@@ -311,8 +345,10 @@ message ListEntitiesFanResponse {
   bool supports_oscillation = 5;
   bool supports_speed = 6;
   bool supports_direction = 7;
-  int32 supported_speed_levels = 8;
+  int32 supported_speed_count = 8;
   bool disabled_by_default = 9;
+  string icon = 10;
+  EntityCategory entity_category = 11;
 }
 enum FanSpeed {
   FAN_SPEED_LOW = 0;
@@ -388,6 +424,8 @@ message ListEntitiesLightResponse {
   float max_mireds = 10;
   repeated string effects = 11;
   bool disabled_by_default = 13;
+  string icon = 14;
+  EntityCategory entity_category = 15;
 }
 message LightStateResponse {
   option (id) = 24;
@@ -448,6 +486,8 @@ message LightCommandRequest {
 enum SensorStateClass {
   STATE_CLASS_NONE = 0;
   STATE_CLASS_MEASUREMENT = 1;
+  STATE_CLASS_TOTAL_INCREASING = 2;
+  STATE_CLASS_TOTAL = 3;
 }
 
 enum SensorLastResetType {
@@ -472,8 +512,10 @@ message ListEntitiesSensorResponse {
   bool force_update = 8;
   string device_class = 9;
   SensorStateClass state_class = 10;
-  SensorLastResetType last_reset_type = 11;
+  // Last reset type removed in 2021.9.0
+  SensorLastResetType legacy_last_reset_type = 11;
   bool disabled_by_default = 12;
+  EntityCategory entity_category = 13;
 }
 message SensorStateResponse {
   option (id) = 25;
@@ -502,6 +544,8 @@ message ListEntitiesSwitchResponse {
   string icon = 5;
   bool assumed_state = 6;
   bool disabled_by_default = 7;
+  EntityCategory entity_category = 8;
+  string device_class = 9;
 }
 message SwitchStateResponse {
   option (id) = 26;
@@ -535,6 +579,7 @@ message ListEntitiesTextSensorResponse {
 
   string icon = 5;
   bool disabled_by_default = 6;
+  EntityCategory entity_category = 7;
 }
 message TextSensorStateResponse {
   option (id) = 27;
@@ -555,9 +600,10 @@ enum LogLevel {
   LOG_LEVEL_ERROR = 1;
   LOG_LEVEL_WARN = 2;
   LOG_LEVEL_INFO = 3;
-  LOG_LEVEL_DEBUG = 4;
-  LOG_LEVEL_VERBOSE = 5;
-  LOG_LEVEL_VERY_VERBOSE = 6;
+  LOG_LEVEL_CONFIG = 4;
+  LOG_LEVEL_DEBUG = 5;
+  LOG_LEVEL_VERBOSE = 6;
+  LOG_LEVEL_VERY_VERBOSE = 7;
 }
 message SubscribeLogsRequest {
   option (id) = 28;
@@ -572,7 +618,6 @@ message SubscribeLogsResponse {
   option (no_delay) = false;
 
   LogLevel level = 1;
-  string tag = 2;
   string message = 3;
   bool send_failed = 4;
 }
@@ -695,6 +740,8 @@ message ListEntitiesCameraResponse {
   string name = 3;
   string unique_id = 4;
   bool disabled_by_default = 5;
+  string icon = 6;
+  EntityCategory entity_category = 7;
 }
 
 message CameraImageResponse {
@@ -788,6 +835,8 @@ message ListEntitiesClimateResponse {
   repeated ClimatePreset supported_presets = 16;
   repeated string supported_custom_presets = 17;
   bool disabled_by_default = 18;
+  string icon = 19;
+  EntityCategory entity_category = 20;
 }
 message ClimateStateResponse {
   option (id) = 47;
@@ -841,6 +890,11 @@ message ClimateCommandRequest {
 }
 
 // ==================== NUMBER ====================
+enum NumberMode {
+  NUMBER_MODE_AUTO = 0;
+  NUMBER_MODE_BOX = 1;
+  NUMBER_MODE_SLIDER = 2;
+}
 message ListEntitiesNumberResponse {
   option (id) = 49;
   option (source) = SOURCE_SERVER;
@@ -856,6 +910,9 @@ message ListEntitiesNumberResponse {
   float max_value = 7;
   float step = 8;
   bool disabled_by_default = 9;
+  EntityCategory entity_category = 10;
+  string unit_of_measurement = 11;
+  NumberMode mode = 12;
 }
 message NumberStateResponse {
   option (id) = 50;
@@ -893,6 +950,7 @@ message ListEntitiesSelectResponse {
   string icon = 5;
   repeated string options = 6;
   bool disabled_by_default = 7;
+  EntityCategory entity_category = 8;
 }
 message SelectStateResponse {
   option (id) = 53;
@@ -914,4 +972,329 @@ message SelectCommandRequest {
 
   fixed32 key = 1;
   string state = 2;
+}
+
+
+// ==================== LOCK ====================
+enum LockState {
+  LOCK_STATE_NONE = 0;
+  LOCK_STATE_LOCKED = 1;
+  LOCK_STATE_UNLOCKED = 2;
+  LOCK_STATE_JAMMED = 3;
+  LOCK_STATE_LOCKING = 4;
+  LOCK_STATE_UNLOCKING = 5;
+}
+enum LockCommand  {
+  LOCK_UNLOCK = 0;
+  LOCK_LOCK = 1;
+  LOCK_OPEN = 2;
+}
+message ListEntitiesLockResponse {
+  option (id) = 58;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_LOCK";
+
+  string object_id = 1;
+  fixed32 key = 2;
+  string name = 3;
+  string unique_id = 4;
+
+  string icon = 5;
+  bool disabled_by_default = 6;
+  EntityCategory entity_category = 7;
+  bool assumed_state = 8;
+
+  bool supports_open = 9;
+  bool requires_code = 10;
+
+  // Not yet implemented:
+  string code_format = 11;
+}
+message LockStateResponse {
+  option (id) = 59;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_LOCK";
+  option (no_delay) = true;
+  fixed32 key = 1;
+  LockState state = 2;
+}
+message LockCommandRequest {
+  option (id) = 60;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_LOCK";
+  option (no_delay) = true;
+  fixed32 key = 1;
+  LockCommand command = 2;
+
+  // Not yet implemented:
+  bool has_code = 3;
+  string code = 4;
+}
+
+// ==================== BUTTON ====================
+message ListEntitiesButtonResponse {
+  option (id) = 61;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_BUTTON";
+
+  string object_id = 1;
+  fixed32 key = 2;
+  string name = 3;
+  string unique_id = 4;
+
+  string icon = 5;
+  bool disabled_by_default = 6;
+  EntityCategory entity_category = 7;
+  string device_class = 8;
+}
+message ButtonCommandRequest {
+  option (id) = 62;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BUTTON";
+  option (no_delay) = true;
+
+  fixed32 key = 1;
+}
+
+// ==================== MEDIA PLAYER ====================
+enum MediaPlayerState {
+  MEDIA_PLAYER_STATE_NONE = 0;
+  MEDIA_PLAYER_STATE_IDLE = 1;
+  MEDIA_PLAYER_STATE_PLAYING = 2;
+  MEDIA_PLAYER_STATE_PAUSED = 3;
+}
+enum MediaPlayerCommand {
+  MEDIA_PLAYER_COMMAND_PLAY = 0;
+  MEDIA_PLAYER_COMMAND_PAUSE = 1;
+  MEDIA_PLAYER_COMMAND_STOP = 2;
+  MEDIA_PLAYER_COMMAND_MUTE = 3;
+  MEDIA_PLAYER_COMMAND_UNMUTE = 4;
+}
+message ListEntitiesMediaPlayerResponse {
+  option (id) = 63;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_MEDIA_PLAYER";
+
+  string object_id = 1;
+  fixed32 key = 2;
+  string name = 3;
+  string unique_id = 4;
+
+  string icon = 5;
+  bool disabled_by_default = 6;
+  EntityCategory entity_category = 7;
+
+  bool supports_pause = 8;
+}
+message MediaPlayerStateResponse {
+  option (id) = 64;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_MEDIA_PLAYER";
+  option (no_delay) = true;
+  fixed32 key = 1;
+  MediaPlayerState state = 2;
+  float volume = 3;
+  bool muted = 4;
+}
+message MediaPlayerCommandRequest {
+  option (id) = 65;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_MEDIA_PLAYER";
+  option (no_delay) = true;
+
+  fixed32 key = 1;
+
+  bool has_command = 2;
+  MediaPlayerCommand command = 3;
+
+  bool has_volume = 4;
+  float volume = 5;
+
+  bool has_media_url = 6;
+  string media_url = 7;
+}
+
+// ==================== BLUETOOTH ====================
+message SubscribeBluetoothLEAdvertisementsRequest {
+  option (id) = 66;
+  option (source) = SOURCE_CLIENT;
+}
+
+message BluetoothServiceData {
+  string uuid = 1;
+  repeated uint32 legacy_data = 2 [deprecated = true];
+  bytes data = 3; // Changed in proto version 1.7
+}
+message BluetoothLEAdvertisementResponse {
+  option (id) = 67;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+  option (no_delay) = true;
+
+  uint64 address = 1;
+  string name = 2;
+  sint32 rssi = 3;
+
+  repeated string service_uuids = 4;
+  repeated BluetoothServiceData service_data = 5;
+  repeated BluetoothServiceData manufacturer_data = 6;
+}
+
+enum BluetoothDeviceRequestType {
+  BLUETOOTH_DEVICE_REQUEST_TYPE_CONNECT = 0;
+  BLUETOOTH_DEVICE_REQUEST_TYPE_DISCONNECT = 1;
+  BLUETOOTH_DEVICE_REQUEST_TYPE_PAIR = 2;
+  BLUETOOTH_DEVICE_REQUEST_TYPE_UNPAIR = 3;
+}
+
+message BluetoothDeviceRequest {
+  option (id) = 68;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  BluetoothDeviceRequestType request_type = 2;
+}
+
+message BluetoothDeviceConnectionResponse {
+  option (id) = 69;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  bool connected = 2;
+  uint32 mtu = 3;
+  int32 error = 4;
+}
+
+message BluetoothGATTGetServicesRequest {
+  option (id) = 70;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+}
+
+message BluetoothGATTDescriptor {
+  repeated uint64 uuid = 1;
+  uint32 handle = 2;
+}
+
+message BluetoothGATTCharacteristic {
+  repeated uint64 uuid = 1;
+  uint32 handle = 2;
+  uint32 properties = 3;
+  repeated BluetoothGATTDescriptor descriptors = 4;
+}
+
+message BluetoothGATTService {
+  repeated uint64 uuid = 1;
+  uint32 handle = 2;
+  repeated BluetoothGATTCharacteristic characteristics = 3;
+}
+
+message BluetoothGATTGetServicesResponse {
+  option (id) = 71;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  repeated BluetoothGATTService services = 2;
+}
+
+message BluetoothGATTGetServicesDoneResponse {
+  option (id) = 72;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+}
+
+message BluetoothGATTReadRequest {
+  option (id) = 73;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  uint32 handle = 2;
+}
+
+message BluetoothGATTReadResponse {
+  option (id) = 74;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  uint32 handle = 2;
+
+  bytes data = 3;
+
+}
+
+message BluetoothGATTWriteRequest {
+  option (id) = 75;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  uint32 handle = 2;
+  bool response = 3;
+
+  bytes data = 4;
+}
+
+message BluetoothGATTReadDescriptorRequest {
+  option (id) = 76;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  uint32 handle = 2;
+}
+
+message BluetoothGATTWriteDescriptorRequest {
+  option (id) = 77;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  uint32 handle = 2;
+
+  bytes data = 3;
+}
+
+message BluetoothGATTNotifyRequest {
+  option (id) = 78;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  uint32 handle = 2;
+  bool enable = 3;
+}
+
+message BluetoothGATTNotifyDataResponse {
+  option (id) = 79;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint64 address = 1;
+  uint32 handle = 2;
+
+  bytes data = 3;
+}
+
+message SubscribeBluetoothConnectionsFreeRequest {
+  option (id) = 80;
+  option (source) = SOURCE_CLIENT;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+}
+
+message BluetoothConnectionsFreeResponse {
+  option (id) = 81;
+  option (source) = SOURCE_SERVER;
+  option (ifdef) = "USE_BLUETOOTH_PROXY";
+
+  uint32 free = 1;
+  uint32 limit = 2;
 }

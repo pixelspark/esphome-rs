@@ -16,7 +16,7 @@ pub enum EspHomeError {
 	Io(#[from] std::io::Error),
 
 	#[error("Protobuf error: {0}")]
-	Protobuf(#[from] protobuf::ProtobufError),
+	Protobuf(#[from] protobuf::Error),
 
 	#[error("System time error: {0}")]
 	SystemTime(#[from] std::time::SystemTimeError),

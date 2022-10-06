@@ -1,7 +1,7 @@
 [package]
 name = "esphome"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 description = "ESPHome API client for Rust."
 repository = "https://github.com/pixelspark/esphome-rs"
 license = "MIT"
@@ -11,10 +11,10 @@ name = "esphome"
 path = "src/lib.rs"
 
 [dependencies]
-protobuf = "2"
-thiserror = "1.0.26"
+protobuf = "3"
+thiserror = "1.0.37"
 num-traits = "0.2"
-num-derive = "0.2"
+num-derive = "0.3"
 
 [dev-dependencies]
 structopt = "0.3"

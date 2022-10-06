@@ -21,7 +21,7 @@ impl<'a> Device<'a> {
 	}
 
 	pub fn server_info(&self) -> String {
-		self.hello_information.get_server_info().to_owned()
+		self.hello_information.server_info.clone()
 	}
 
 	pub fn authenticate(
@@ -29,14 +29,14 @@ impl<'a> Device<'a> {
 		password: &str,
 	) -> Result<AuthenticatedDevice<'a>, Box<dyn Error>> {
 		let mut cr = api::ConnectRequest::new();
-		cr.set_password(password.to_string());
+		cr.password = password.to_string();
 		self.connection
 			.send_message(MessageType::ConnectRequest, &cr)?;
 		let cr: ConnectResponse = self
 			.connection
 			.receive_message(MessageType::ConnectResponse)?;
 
-		if cr.get_invalid_password() {
+		if cr.invalid_password {
 			return Err(Box::new(EspHomeError::InvalidPassword));
 		}
 

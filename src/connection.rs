@@ -9,7 +9,7 @@ use std::{
 	collections::HashMap,
 	error::Error,
 	io::{Read, Write},
-	time::{SystemTime, UNIX_EPOCH},
+	time::{SystemTime, UNIX_EPOCH}, mem::MaybeUninit,
 };
 
 #[derive(Debug)]
@@ -93,9 +93,10 @@ impl<'a> Connection<'a> {
 	where
 		M: protobuf::Message,
 	{
-		let mut message_bytes = vec![0u8; header.message_length as usize];
-		self.cis.read_exact(&mut message_bytes)?;
-		Ok(M::parse_from_bytes(&message_bytes)?)
+		let mut message_bytes: [MaybeUninit::<u8>; 4096] = unsafe { MaybeUninit::uninit().assume_init() };
+		self.cis.read_exact(&mut message_bytes[0..header.message_length as usize] )?;
+		let data = unsafe { std::mem::transmute::<_, [u8; 4096]>(message_bytes) };
+		Ok(M::parse_from_bytes(&data[0..header.message_length as usize])?)
 	}
 
 	fn ignore_bytes(&mut self, bytes: u32) -> Result<(), EspHomeError> {
@@ -169,7 +170,7 @@ impl<'a> Connection<'a> {
 
 	pub(crate) fn receive_message_header(&mut self) -> Result<MessageHeader, EspHomeError> {
 		loop {
-			let mut zero = [0u8; 1];
+			let mut zero = [MaybeUninit::uninit() ; 1];
 			self.cis.read_exact(&mut zero)?;
 			let len = self.cis.read_raw_varint32()?;
 			let tp = self.cis.read_raw_varint32()?;
@@ -202,7 +203,7 @@ impl<'a> Connection<'a> {
 
 	pub fn connect(mut self) -> Result<Device<'a>, EspHomeError> {
 		let mut hr = api::HelloRequest::new();
-		hr.set_client_info("esphome.rs".to_string());
+		hr.client_info = "esphome.rs".to_string();
 		self.send_message(MessageType::HelloRequest, &hr)?;
 
 		let hr: HelloResponse = self.receive_message(MessageType::HelloResponse)?;
