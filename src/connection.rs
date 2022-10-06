@@ -9,7 +9,8 @@ use std::{
 	collections::HashMap,
 	error::Error,
 	io::{Read, Write},
-	time::{SystemTime, UNIX_EPOCH}, mem::MaybeUninit,
+	mem::MaybeUninit,
+	time::{SystemTime, UNIX_EPOCH},
 };
 
 #[derive(Debug)]
@@ -93,10 +94,14 @@ impl<'a> Connection<'a> {
 	where
 		M: protobuf::Message,
 	{
-		let mut message_bytes: [MaybeUninit::<u8>; 4096] = unsafe { MaybeUninit::uninit().assume_init() };
-		self.cis.read_exact(&mut message_bytes[0..header.message_length as usize] )?;
+		let mut message_bytes: [MaybeUninit<u8>; 4096] =
+			unsafe { MaybeUninit::uninit().assume_init() };
+		self.cis
+			.read_exact(&mut message_bytes[0..header.message_length as usize])?;
 		let data = unsafe { std::mem::transmute::<_, [u8; 4096]>(message_bytes) };
-		Ok(M::parse_from_bytes(&data[0..header.message_length as usize])?)
+		Ok(M::parse_from_bytes(
+			&data[0..header.message_length as usize],
+		)?)
 	}
 
 	fn ignore_bytes(&mut self, bytes: u32) -> Result<(), EspHomeError> {
@@ -170,7 +175,7 @@ impl<'a> Connection<'a> {
 
 	pub(crate) fn receive_message_header(&mut self) -> Result<MessageHeader, EspHomeError> {
 		loop {
-			let mut zero = [MaybeUninit::uninit() ; 1];
+			let mut zero = [MaybeUninit::uninit(); 1];
 			self.cis.read_exact(&mut zero)?;
 			let len = self.cis.read_raw_varint32()?;
 			let tp = self.cis.read_raw_varint32()?;
