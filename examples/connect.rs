@@ -37,12 +37,13 @@ fn main() -> Result<(), Box<dyn Error>> {
 		println!("Device info={:?}", ad.device_info()?);
 
 		ad.subscribe_states()?;
+		let entities = ad.list_entities()?;
+
 		loop {
 			ad.device.ping()?;
 			std::thread::sleep(Duration::from_secs(1));
 
-			let entities = ad.list_entities()?;
-			for e in entities {
+			for e in &entities {
 				println!("- {:?}: {:?}", e, ad.device.connection.get_last_state(&e));
 			}
 		}
