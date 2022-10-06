@@ -18,8 +18,11 @@
 #![allow(trivial_casts)]
 #![allow(unused_results)]
 #![allow(unused_mut)]
+#![allow(clippy::cast_possible_truncation)]
 
 //! Generated file from `api.proto`
+
+use ::std::{vec::Vec, default::Default, fmt::{Display, Formatter}, string::String};
 
 /// Generated files are compatible only with the same version
 /// of protobuf runtime.
@@ -36,7 +39,7 @@ pub struct HelloRequest {
     ///  Not strictly necessary to send but nice for debugging
     ///  purposes.
     // @@protoc_insertion_point(field:HelloRequest.client_info)
-    pub client_info: ::std::string::String,
+    pub client_info: String,
     // @@protoc_insertion_point(field:HelloRequest.api_version_major)
     pub api_version_major: u32,
     // @@protoc_insertion_point(field:HelloRequest.api_version_minor)
@@ -46,7 +49,7 @@ pub struct HelloRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a HelloRequest {
+impl<'a> Default for &'a HelloRequest {
     fn default() -> &'a HelloRequest {
         <HelloRequest as ::protobuf::Message>::default_instance()
     }
@@ -54,12 +57,12 @@ impl<'a> ::std::default::Default for &'a HelloRequest {
 
 impl HelloRequest {
     pub fn new() -> HelloRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "client_info",
             |m: &HelloRequest| { &m.client_info },
@@ -163,7 +166,7 @@ impl ::protobuf::Message for HelloRequest {
 
     fn default_instance() -> &'static HelloRequest {
         static instance: HelloRequest = HelloRequest {
-            client_info: ::std::string::String::new(),
+            client_info: String::new(),
             api_version_major: 0,
             api_version_minor: 0,
             special_fields: ::protobuf::SpecialFields::new(),
@@ -179,8 +182,8 @@ impl ::protobuf::MessageFull for HelloRequest {
     }
 }
 
-impl ::std::fmt::Display for HelloRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for HelloRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -207,16 +210,16 @@ pub struct HelloResponse {
     ///  and only exists for debugging/logging purposes.
     ///  For example "ESPHome v1.10.0 on ESP8266"
     // @@protoc_insertion_point(field:HelloResponse.server_info)
-    pub server_info: ::std::string::String,
+    pub server_info: String,
     ///  The name of the server (App.get_name())
     // @@protoc_insertion_point(field:HelloResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // special fields
     // @@protoc_insertion_point(special_field:HelloResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a HelloResponse {
+impl<'a> Default for &'a HelloResponse {
     fn default() -> &'a HelloResponse {
         <HelloResponse as ::protobuf::Message>::default_instance()
     }
@@ -224,12 +227,12 @@ impl<'a> ::std::default::Default for &'a HelloResponse {
 
 impl HelloResponse {
     pub fn new() -> HelloResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(4);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(4);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "api_version_major",
             |m: &HelloResponse| { &m.api_version_major },
@@ -350,8 +353,8 @@ impl ::protobuf::Message for HelloResponse {
         static instance: HelloResponse = HelloResponse {
             api_version_major: 0,
             api_version_minor: 0,
-            server_info: ::std::string::String::new(),
-            name: ::std::string::String::new(),
+            server_info: String::new(),
+            name: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -365,8 +368,8 @@ impl ::protobuf::MessageFull for HelloResponse {
     }
 }
 
-impl ::std::fmt::Display for HelloResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for HelloResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -383,13 +386,13 @@ pub struct ConnectRequest {
     // message fields
     ///  The password to log in with
     // @@protoc_insertion_point(field:ConnectRequest.password)
-    pub password: ::std::string::String,
+    pub password: String,
     // special fields
     // @@protoc_insertion_point(special_field:ConnectRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ConnectRequest {
+impl<'a> Default for &'a ConnectRequest {
     fn default() -> &'a ConnectRequest {
         <ConnectRequest as ::protobuf::Message>::default_instance()
     }
@@ -397,12 +400,12 @@ impl<'a> ::std::default::Default for &'a ConnectRequest {
 
 impl ConnectRequest {
     pub fn new() -> ConnectRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(1);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(1);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "password",
             |m: &ConnectRequest| { &m.password },
@@ -476,7 +479,7 @@ impl ::protobuf::Message for ConnectRequest {
 
     fn default_instance() -> &'static ConnectRequest {
         static instance: ConnectRequest = ConnectRequest {
-            password: ::std::string::String::new(),
+            password: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -490,8 +493,8 @@ impl ::protobuf::MessageFull for ConnectRequest {
     }
 }
 
-impl ::std::fmt::Display for ConnectRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ConnectRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -513,7 +516,7 @@ pub struct ConnectResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ConnectResponse {
+impl<'a> Default for &'a ConnectResponse {
     fn default() -> &'a ConnectResponse {
         <ConnectResponse as ::protobuf::Message>::default_instance()
     }
@@ -521,12 +524,12 @@ impl<'a> ::std::default::Default for &'a ConnectResponse {
 
 impl ConnectResponse {
     pub fn new() -> ConnectResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(1);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(1);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "invalid_password",
             |m: &ConnectResponse| { &m.invalid_password },
@@ -614,8 +617,8 @@ impl ::protobuf::MessageFull for ConnectResponse {
     }
 }
 
-impl ::std::fmt::Display for ConnectResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ConnectResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -634,7 +637,7 @@ pub struct DisconnectRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a DisconnectRequest {
+impl<'a> Default for &'a DisconnectRequest {
     fn default() -> &'a DisconnectRequest {
         <DisconnectRequest as ::protobuf::Message>::default_instance()
     }
@@ -642,12 +645,12 @@ impl<'a> ::std::default::Default for &'a DisconnectRequest {
 
 impl DisconnectRequest {
     pub fn new() -> DisconnectRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<DisconnectRequest>(
             "DisconnectRequest",
             fields,
@@ -719,8 +722,8 @@ impl ::protobuf::MessageFull for DisconnectRequest {
     }
 }
 
-impl ::std::fmt::Display for DisconnectRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for DisconnectRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -737,7 +740,7 @@ pub struct DisconnectResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a DisconnectResponse {
+impl<'a> Default for &'a DisconnectResponse {
     fn default() -> &'a DisconnectResponse {
         <DisconnectResponse as ::protobuf::Message>::default_instance()
     }
@@ -745,12 +748,12 @@ impl<'a> ::std::default::Default for &'a DisconnectResponse {
 
 impl DisconnectResponse {
     pub fn new() -> DisconnectResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<DisconnectResponse>(
             "DisconnectResponse",
             fields,
@@ -822,8 +825,8 @@ impl ::protobuf::MessageFull for DisconnectResponse {
     }
 }
 
-impl ::std::fmt::Display for DisconnectResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for DisconnectResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -840,7 +843,7 @@ pub struct PingRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a PingRequest {
+impl<'a> Default for &'a PingRequest {
     fn default() -> &'a PingRequest {
         <PingRequest as ::protobuf::Message>::default_instance()
     }
@@ -848,12 +851,12 @@ impl<'a> ::std::default::Default for &'a PingRequest {
 
 impl PingRequest {
     pub fn new() -> PingRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<PingRequest>(
             "PingRequest",
             fields,
@@ -925,8 +928,8 @@ impl ::protobuf::MessageFull for PingRequest {
     }
 }
 
-impl ::std::fmt::Display for PingRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for PingRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -943,7 +946,7 @@ pub struct PingResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a PingResponse {
+impl<'a> Default for &'a PingResponse {
     fn default() -> &'a PingResponse {
         <PingResponse as ::protobuf::Message>::default_instance()
     }
@@ -951,12 +954,12 @@ impl<'a> ::std::default::Default for &'a PingResponse {
 
 impl PingResponse {
     pub fn new() -> PingResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<PingResponse>(
             "PingResponse",
             fields,
@@ -1028,8 +1031,8 @@ impl ::protobuf::MessageFull for PingResponse {
     }
 }
 
-impl ::std::fmt::Display for PingResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for PingResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -1046,7 +1049,7 @@ pub struct DeviceInfoRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a DeviceInfoRequest {
+impl<'a> Default for &'a DeviceInfoRequest {
     fn default() -> &'a DeviceInfoRequest {
         <DeviceInfoRequest as ::protobuf::Message>::default_instance()
     }
@@ -1054,12 +1057,12 @@ impl<'a> ::std::default::Default for &'a DeviceInfoRequest {
 
 impl DeviceInfoRequest {
     pub fn new() -> DeviceInfoRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<DeviceInfoRequest>(
             "DeviceInfoRequest",
             fields,
@@ -1131,8 +1134,8 @@ impl ::protobuf::MessageFull for DeviceInfoRequest {
     }
 }
 
-impl ::std::fmt::Display for DeviceInfoRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for DeviceInfoRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -1149,28 +1152,28 @@ pub struct DeviceInfoResponse {
     pub uses_password: bool,
     ///  The name of the node, given by "App.set_name()"
     // @@protoc_insertion_point(field:DeviceInfoResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     ///  The mac address of the device. For example "AC:BC:32:89:0E:A9"
     // @@protoc_insertion_point(field:DeviceInfoResponse.mac_address)
-    pub mac_address: ::std::string::String,
+    pub mac_address: String,
     ///  A string describing the ESPHome version. For example "1.10.0"
     // @@protoc_insertion_point(field:DeviceInfoResponse.esphome_version)
-    pub esphome_version: ::std::string::String,
+    pub esphome_version: String,
     ///  A string describing the date of compilation, this is generated by the compiler
     ///  and therefore may not be in the same format all the time.
     ///  If the user isn't using ESPHome, this will also not be set.
     // @@protoc_insertion_point(field:DeviceInfoResponse.compilation_time)
-    pub compilation_time: ::std::string::String,
+    pub compilation_time: String,
     ///  The model of the board. For example NodeMCU
     // @@protoc_insertion_point(field:DeviceInfoResponse.model)
-    pub model: ::std::string::String,
+    pub model: String,
     // @@protoc_insertion_point(field:DeviceInfoResponse.has_deep_sleep)
     pub has_deep_sleep: bool,
     ///  The esphome project details if set
     // @@protoc_insertion_point(field:DeviceInfoResponse.project_name)
-    pub project_name: ::std::string::String,
+    pub project_name: String,
     // @@protoc_insertion_point(field:DeviceInfoResponse.project_version)
-    pub project_version: ::std::string::String,
+    pub project_version: String,
     // @@protoc_insertion_point(field:DeviceInfoResponse.webserver_port)
     pub webserver_port: u32,
     // @@protoc_insertion_point(field:DeviceInfoResponse.bluetooth_proxy_version)
@@ -1180,7 +1183,7 @@ pub struct DeviceInfoResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a DeviceInfoResponse {
+impl<'a> Default for &'a DeviceInfoResponse {
     fn default() -> &'a DeviceInfoResponse {
         <DeviceInfoResponse as ::protobuf::Message>::default_instance()
     }
@@ -1188,12 +1191,12 @@ impl<'a> ::std::default::Default for &'a DeviceInfoResponse {
 
 impl DeviceInfoResponse {
     pub fn new() -> DeviceInfoResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(11);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(11);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "uses_password",
             |m: &DeviceInfoResponse| { &m.uses_password },
@@ -1418,14 +1421,14 @@ impl ::protobuf::Message for DeviceInfoResponse {
     fn default_instance() -> &'static DeviceInfoResponse {
         static instance: DeviceInfoResponse = DeviceInfoResponse {
             uses_password: false,
-            name: ::std::string::String::new(),
-            mac_address: ::std::string::String::new(),
-            esphome_version: ::std::string::String::new(),
-            compilation_time: ::std::string::String::new(),
-            model: ::std::string::String::new(),
+            name: String::new(),
+            mac_address: String::new(),
+            esphome_version: String::new(),
+            compilation_time: String::new(),
+            model: String::new(),
             has_deep_sleep: false,
-            project_name: ::std::string::String::new(),
-            project_version: ::std::string::String::new(),
+            project_name: String::new(),
+            project_version: String::new(),
             webserver_port: 0,
             bluetooth_proxy_version: 0,
             special_fields: ::protobuf::SpecialFields::new(),
@@ -1441,8 +1444,8 @@ impl ::protobuf::MessageFull for DeviceInfoResponse {
     }
 }
 
-impl ::std::fmt::Display for DeviceInfoResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for DeviceInfoResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -1459,7 +1462,7 @@ pub struct ListEntitiesRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesRequest {
+impl<'a> Default for &'a ListEntitiesRequest {
     fn default() -> &'a ListEntitiesRequest {
         <ListEntitiesRequest as ::protobuf::Message>::default_instance()
     }
@@ -1467,12 +1470,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesRequest {
 
 impl ListEntitiesRequest {
     pub fn new() -> ListEntitiesRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ListEntitiesRequest>(
             "ListEntitiesRequest",
             fields,
@@ -1544,8 +1547,8 @@ impl ::protobuf::MessageFull for ListEntitiesRequest {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -1562,7 +1565,7 @@ pub struct ListEntitiesDoneResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesDoneResponse {
+impl<'a> Default for &'a ListEntitiesDoneResponse {
     fn default() -> &'a ListEntitiesDoneResponse {
         <ListEntitiesDoneResponse as ::protobuf::Message>::default_instance()
     }
@@ -1570,12 +1573,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesDoneResponse {
 
 impl ListEntitiesDoneResponse {
     pub fn new() -> ListEntitiesDoneResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ListEntitiesDoneResponse>(
             "ListEntitiesDoneResponse",
             fields,
@@ -1647,8 +1650,8 @@ impl ::protobuf::MessageFull for ListEntitiesDoneResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesDoneResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesDoneResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -1665,7 +1668,7 @@ pub struct SubscribeStatesRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SubscribeStatesRequest {
+impl<'a> Default for &'a SubscribeStatesRequest {
     fn default() -> &'a SubscribeStatesRequest {
         <SubscribeStatesRequest as ::protobuf::Message>::default_instance()
     }
@@ -1673,12 +1676,12 @@ impl<'a> ::std::default::Default for &'a SubscribeStatesRequest {
 
 impl SubscribeStatesRequest {
     pub fn new() -> SubscribeStatesRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<SubscribeStatesRequest>(
             "SubscribeStatesRequest",
             fields,
@@ -1750,8 +1753,8 @@ impl ::protobuf::MessageFull for SubscribeStatesRequest {
     }
 }
 
-impl ::std::fmt::Display for SubscribeStatesRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SubscribeStatesRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -1766,21 +1769,21 @@ impl ::protobuf::reflect::ProtobufValue for SubscribeStatesRequest {
 pub struct ListEntitiesBinarySensorResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.device_class)
-    pub device_class: ::std::string::String,
+    pub device_class: String,
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.is_status_binary_sensor)
     pub is_status_binary_sensor: bool,
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesBinarySensorResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // special fields
@@ -1788,7 +1791,7 @@ pub struct ListEntitiesBinarySensorResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesBinarySensorResponse {
+impl<'a> Default for &'a ListEntitiesBinarySensorResponse {
     fn default() -> &'a ListEntitiesBinarySensorResponse {
         <ListEntitiesBinarySensorResponse as ::protobuf::Message>::default_instance()
     }
@@ -1796,12 +1799,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesBinarySensorResponse {
 
 impl ListEntitiesBinarySensorResponse {
     pub fn new() -> ListEntitiesBinarySensorResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(9);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(9);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesBinarySensorResponse| { &m.object_id },
@@ -1995,14 +1998,14 @@ impl ::protobuf::Message for ListEntitiesBinarySensorResponse {
 
     fn default_instance() -> &'static ListEntitiesBinarySensorResponse {
         static instance: ListEntitiesBinarySensorResponse = ListEntitiesBinarySensorResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            device_class: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            device_class: String::new(),
             is_status_binary_sensor: false,
             disabled_by_default: false,
-            icon: ::std::string::String::new(),
+            icon: String::new(),
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -2017,8 +2020,8 @@ impl ::protobuf::MessageFull for ListEntitiesBinarySensorResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesBinarySensorResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesBinarySensorResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -2044,7 +2047,7 @@ pub struct BinarySensorStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BinarySensorStateResponse {
+impl<'a> Default for &'a BinarySensorStateResponse {
     fn default() -> &'a BinarySensorStateResponse {
         <BinarySensorStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -2052,12 +2055,12 @@ impl<'a> ::std::default::Default for &'a BinarySensorStateResponse {
 
 impl BinarySensorStateResponse {
     pub fn new() -> BinarySensorStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &BinarySensorStateResponse| { &m.key },
@@ -2177,8 +2180,8 @@ impl ::protobuf::MessageFull for BinarySensorStateResponse {
     }
 }
 
-impl ::std::fmt::Display for BinarySensorStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BinarySensorStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -2193,13 +2196,13 @@ impl ::protobuf::reflect::ProtobufValue for BinarySensorStateResponse {
 pub struct ListEntitiesCoverResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.assumed_state)
     pub assumed_state: bool,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.supports_position)
@@ -2207,11 +2210,11 @@ pub struct ListEntitiesCoverResponse {
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.supports_tilt)
     pub supports_tilt: bool,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.device_class)
-    pub device_class: ::std::string::String,
+    pub device_class: String,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesCoverResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // special fields
@@ -2219,7 +2222,7 @@ pub struct ListEntitiesCoverResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesCoverResponse {
+impl<'a> Default for &'a ListEntitiesCoverResponse {
     fn default() -> &'a ListEntitiesCoverResponse {
         <ListEntitiesCoverResponse as ::protobuf::Message>::default_instance()
     }
@@ -2227,12 +2230,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesCoverResponse {
 
 impl ListEntitiesCoverResponse {
     pub fn new() -> ListEntitiesCoverResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(11);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(11);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesCoverResponse| { &m.object_id },
@@ -2456,16 +2459,16 @@ impl ::protobuf::Message for ListEntitiesCoverResponse {
 
     fn default_instance() -> &'static ListEntitiesCoverResponse {
         static instance: ListEntitiesCoverResponse = ListEntitiesCoverResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
             assumed_state: false,
             supports_position: false,
             supports_tilt: false,
-            device_class: ::std::string::String::new(),
+            device_class: String::new(),
             disabled_by_default: false,
-            icon: ::std::string::String::new(),
+            icon: String::new(),
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -2480,8 +2483,8 @@ impl ::protobuf::MessageFull for ListEntitiesCoverResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesCoverResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesCoverResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -2511,7 +2514,7 @@ pub struct CoverStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a CoverStateResponse {
+impl<'a> Default for &'a CoverStateResponse {
     fn default() -> &'a CoverStateResponse {
         <CoverStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -2519,12 +2522,12 @@ impl<'a> ::std::default::Default for &'a CoverStateResponse {
 
 impl CoverStateResponse {
     pub fn new() -> CoverStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(5);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(5);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &CoverStateResponse| { &m.key },
@@ -2676,8 +2679,8 @@ impl ::protobuf::MessageFull for CoverStateResponse {
     }
 }
 
-impl ::std::fmt::Display for CoverStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for CoverStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -2713,7 +2716,7 @@ pub struct CoverCommandRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a CoverCommandRequest {
+impl<'a> Default for &'a CoverCommandRequest {
     fn default() -> &'a CoverCommandRequest {
         <CoverCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -2721,12 +2724,12 @@ impl<'a> ::std::default::Default for &'a CoverCommandRequest {
 
 impl CoverCommandRequest {
     pub fn new() -> CoverCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(8);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(8);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &CoverCommandRequest| { &m.key },
@@ -2926,8 +2929,8 @@ impl ::protobuf::MessageFull for CoverCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for CoverCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for CoverCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -2942,13 +2945,13 @@ impl ::protobuf::reflect::ProtobufValue for CoverCommandRequest {
 pub struct ListEntitiesFanResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.supports_oscillation)
     pub supports_oscillation: bool,
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.supports_speed)
@@ -2960,7 +2963,7 @@ pub struct ListEntitiesFanResponse {
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesFanResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // special fields
@@ -2968,7 +2971,7 @@ pub struct ListEntitiesFanResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesFanResponse {
+impl<'a> Default for &'a ListEntitiesFanResponse {
     fn default() -> &'a ListEntitiesFanResponse {
         <ListEntitiesFanResponse as ::protobuf::Message>::default_instance()
     }
@@ -2976,12 +2979,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesFanResponse {
 
 impl ListEntitiesFanResponse {
     pub fn new() -> ListEntitiesFanResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(11);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(11);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesFanResponse| { &m.object_id },
@@ -3205,16 +3208,16 @@ impl ::protobuf::Message for ListEntitiesFanResponse {
 
     fn default_instance() -> &'static ListEntitiesFanResponse {
         static instance: ListEntitiesFanResponse = ListEntitiesFanResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
             supports_oscillation: false,
             supports_speed: false,
             supports_direction: false,
             supported_speed_count: 0,
             disabled_by_default: false,
-            icon: ::std::string::String::new(),
+            icon: String::new(),
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -3229,8 +3232,8 @@ impl ::protobuf::MessageFull for ListEntitiesFanResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesFanResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesFanResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -3260,7 +3263,7 @@ pub struct FanStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a FanStateResponse {
+impl<'a> Default for &'a FanStateResponse {
     fn default() -> &'a FanStateResponse {
         <FanStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -3268,12 +3271,12 @@ impl<'a> ::std::default::Default for &'a FanStateResponse {
 
 impl FanStateResponse {
     pub fn new() -> FanStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(6);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(6);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &FanStateResponse| { &m.key },
@@ -3441,8 +3444,8 @@ impl ::protobuf::MessageFull for FanStateResponse {
     }
 }
 
-impl ::std::fmt::Display for FanStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for FanStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -3482,7 +3485,7 @@ pub struct FanCommandRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a FanCommandRequest {
+impl<'a> Default for &'a FanCommandRequest {
     fn default() -> &'a FanCommandRequest {
         <FanCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -3490,12 +3493,12 @@ impl<'a> ::std::default::Default for &'a FanCommandRequest {
 
 impl FanCommandRequest {
     pub fn new() -> FanCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(11);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(11);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &FanCommandRequest| { &m.key },
@@ -3743,8 +3746,8 @@ impl ::protobuf::MessageFull for FanCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for FanCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for FanCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -3758,15 +3761,15 @@ impl ::protobuf::reflect::ProtobufValue for FanCommandRequest {
 pub struct ListEntitiesLightResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.supported_color_modes)
-    pub supported_color_modes: ::std::vec::Vec<::protobuf::EnumOrUnknown<ColorMode>>,
+    pub supported_color_modes: Vec<::protobuf::EnumOrUnknown<ColorMode>>,
     ///  next four supports_* are for legacy clients, newer clients should use color modes
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.legacy_supports_brightness)
     pub legacy_supports_brightness: bool,
@@ -3781,11 +3784,11 @@ pub struct ListEntitiesLightResponse {
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.max_mireds)
     pub max_mireds: f32,
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.effects)
-    pub effects: ::std::vec::Vec<::std::string::String>,
+    pub effects: Vec<String>,
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesLightResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // special fields
@@ -3793,7 +3796,7 @@ pub struct ListEntitiesLightResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesLightResponse {
+impl<'a> Default for &'a ListEntitiesLightResponse {
     fn default() -> &'a ListEntitiesLightResponse {
         <ListEntitiesLightResponse as ::protobuf::Message>::default_instance()
     }
@@ -3801,12 +3804,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesLightResponse {
 
 impl ListEntitiesLightResponse {
     pub fn new() -> ListEntitiesLightResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(15);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(15);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesLightResponse| { &m.object_id },
@@ -3916,7 +3919,7 @@ impl ::protobuf::Message for ListEntitiesLightResponse {
                     self.supported_color_modes.push(is.read_enum_or_unknown()?);
                 },
                 98 => {
-                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_color_modes)?
+                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_color_modes)?;
                 },
                 40 => {
                     self.legacy_supports_brightness = is.read_bool()?;
@@ -4093,20 +4096,20 @@ impl ::protobuf::Message for ListEntitiesLightResponse {
 
     fn default_instance() -> &'static ListEntitiesLightResponse {
         static instance: ListEntitiesLightResponse = ListEntitiesLightResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            supported_color_modes: ::std::vec::Vec::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            supported_color_modes: Vec::new(),
             legacy_supports_brightness: false,
             legacy_supports_rgb: false,
             legacy_supports_white_value: false,
             legacy_supports_color_temperature: false,
             min_mireds: 0.,
             max_mireds: 0.,
-            effects: ::std::vec::Vec::new(),
+            effects: Vec::new(),
             disabled_by_default: false,
-            icon: ::std::string::String::new(),
+            icon: String::new(),
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -4121,8 +4124,8 @@ impl ::protobuf::MessageFull for ListEntitiesLightResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesLightResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesLightResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -4160,13 +4163,13 @@ pub struct LightStateResponse {
     // @@protoc_insertion_point(field:LightStateResponse.warm_white)
     pub warm_white: f32,
     // @@protoc_insertion_point(field:LightStateResponse.effect)
-    pub effect: ::std::string::String,
+    pub effect: String,
     // special fields
     // @@protoc_insertion_point(special_field:LightStateResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a LightStateResponse {
+impl<'a> Default for &'a LightStateResponse {
     fn default() -> &'a LightStateResponse {
         <LightStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -4174,12 +4177,12 @@ impl<'a> ::std::default::Default for &'a LightStateResponse {
 
 impl LightStateResponse {
     pub fn new() -> LightStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(13);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(13);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &LightStateResponse| { &m.key },
@@ -4445,7 +4448,7 @@ impl ::protobuf::Message for LightStateResponse {
             color_temperature: 0.,
             cold_white: 0.,
             warm_white: 0.,
-            effect: ::std::string::String::new(),
+            effect: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -4459,8 +4462,8 @@ impl ::protobuf::MessageFull for LightStateResponse {
     }
 }
 
-impl ::std::fmt::Display for LightStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for LightStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -4526,13 +4529,13 @@ pub struct LightCommandRequest {
     // @@protoc_insertion_point(field:LightCommandRequest.has_effect)
     pub has_effect: bool,
     // @@protoc_insertion_point(field:LightCommandRequest.effect)
-    pub effect: ::std::string::String,
+    pub effect: String,
     // special fields
     // @@protoc_insertion_point(special_field:LightCommandRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a LightCommandRequest {
+impl<'a> Default for &'a LightCommandRequest {
     fn default() -> &'a LightCommandRequest {
         <LightCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -4540,12 +4543,12 @@ impl<'a> ::std::default::Default for &'a LightCommandRequest {
 
 impl LightCommandRequest {
     pub fn new() -> LightCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(27);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(27);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &LightCommandRequest| { &m.key },
@@ -5035,7 +5038,7 @@ impl ::protobuf::Message for LightCommandRequest {
             has_flash_length: false,
             flash_length: 0,
             has_effect: false,
-            effect: ::std::string::String::new(),
+            effect: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -5049,8 +5052,8 @@ impl ::protobuf::MessageFull for LightCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for LightCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for LightCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -5064,23 +5067,23 @@ impl ::protobuf::reflect::ProtobufValue for LightCommandRequest {
 pub struct ListEntitiesSensorResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.unit_of_measurement)
-    pub unit_of_measurement: ::std::string::String,
+    pub unit_of_measurement: String,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.accuracy_decimals)
     pub accuracy_decimals: i32,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.force_update)
     pub force_update: bool,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.device_class)
-    pub device_class: ::std::string::String,
+    pub device_class: String,
     // @@protoc_insertion_point(field:ListEntitiesSensorResponse.state_class)
     pub state_class: ::protobuf::EnumOrUnknown<SensorStateClass>,
     ///  Last reset type removed in 2021.9.0
@@ -5095,7 +5098,7 @@ pub struct ListEntitiesSensorResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesSensorResponse {
+impl<'a> Default for &'a ListEntitiesSensorResponse {
     fn default() -> &'a ListEntitiesSensorResponse {
         <ListEntitiesSensorResponse as ::protobuf::Message>::default_instance()
     }
@@ -5103,12 +5106,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesSensorResponse {
 
 impl ListEntitiesSensorResponse {
     pub fn new() -> ListEntitiesSensorResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(13);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(13);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesSensorResponse| { &m.object_id },
@@ -5362,15 +5365,15 @@ impl ::protobuf::Message for ListEntitiesSensorResponse {
 
     fn default_instance() -> &'static ListEntitiesSensorResponse {
         static instance: ListEntitiesSensorResponse = ListEntitiesSensorResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            icon: ::std::string::String::new(),
-            unit_of_measurement: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            icon: String::new(),
+            unit_of_measurement: String::new(),
             accuracy_decimals: 0,
             force_update: false,
-            device_class: ::std::string::String::new(),
+            device_class: String::new(),
             state_class: ::protobuf::EnumOrUnknown::from_i32(0),
             legacy_last_reset_type: ::protobuf::EnumOrUnknown::from_i32(0),
             disabled_by_default: false,
@@ -5388,8 +5391,8 @@ impl ::protobuf::MessageFull for ListEntitiesSensorResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesSensorResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesSensorResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -5415,7 +5418,7 @@ pub struct SensorStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SensorStateResponse {
+impl<'a> Default for &'a SensorStateResponse {
     fn default() -> &'a SensorStateResponse {
         <SensorStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -5423,12 +5426,12 @@ impl<'a> ::std::default::Default for &'a SensorStateResponse {
 
 impl SensorStateResponse {
     pub fn new() -> SensorStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &SensorStateResponse| { &m.key },
@@ -5548,8 +5551,8 @@ impl ::protobuf::MessageFull for SensorStateResponse {
     }
 }
 
-impl ::std::fmt::Display for SensorStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SensorStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -5564,15 +5567,15 @@ impl ::protobuf::reflect::ProtobufValue for SensorStateResponse {
 pub struct ListEntitiesSwitchResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.assumed_state)
     pub assumed_state: bool,
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.disabled_by_default)
@@ -5580,13 +5583,13 @@ pub struct ListEntitiesSwitchResponse {
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // @@protoc_insertion_point(field:ListEntitiesSwitchResponse.device_class)
-    pub device_class: ::std::string::String,
+    pub device_class: String,
     // special fields
     // @@protoc_insertion_point(special_field:ListEntitiesSwitchResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesSwitchResponse {
+impl<'a> Default for &'a ListEntitiesSwitchResponse {
     fn default() -> &'a ListEntitiesSwitchResponse {
         <ListEntitiesSwitchResponse as ::protobuf::Message>::default_instance()
     }
@@ -5594,12 +5597,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesSwitchResponse {
 
 impl ListEntitiesSwitchResponse {
     pub fn new() -> ListEntitiesSwitchResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(9);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(9);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesSwitchResponse| { &m.object_id },
@@ -5793,15 +5796,15 @@ impl ::protobuf::Message for ListEntitiesSwitchResponse {
 
     fn default_instance() -> &'static ListEntitiesSwitchResponse {
         static instance: ListEntitiesSwitchResponse = ListEntitiesSwitchResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            icon: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            icon: String::new(),
             assumed_state: false,
             disabled_by_default: false,
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
-            device_class: ::std::string::String::new(),
+            device_class: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -5815,8 +5818,8 @@ impl ::protobuf::MessageFull for ListEntitiesSwitchResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesSwitchResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesSwitchResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -5838,7 +5841,7 @@ pub struct SwitchStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SwitchStateResponse {
+impl<'a> Default for &'a SwitchStateResponse {
     fn default() -> &'a SwitchStateResponse {
         <SwitchStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -5846,12 +5849,12 @@ impl<'a> ::std::default::Default for &'a SwitchStateResponse {
 
 impl SwitchStateResponse {
     pub fn new() -> SwitchStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &SwitchStateResponse| { &m.key },
@@ -5955,8 +5958,8 @@ impl ::protobuf::MessageFull for SwitchStateResponse {
     }
 }
 
-impl ::std::fmt::Display for SwitchStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SwitchStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -5978,7 +5981,7 @@ pub struct SwitchCommandRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SwitchCommandRequest {
+impl<'a> Default for &'a SwitchCommandRequest {
     fn default() -> &'a SwitchCommandRequest {
         <SwitchCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -5986,12 +5989,12 @@ impl<'a> ::std::default::Default for &'a SwitchCommandRequest {
 
 impl SwitchCommandRequest {
     pub fn new() -> SwitchCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &SwitchCommandRequest| { &m.key },
@@ -6095,8 +6098,8 @@ impl ::protobuf::MessageFull for SwitchCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for SwitchCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SwitchCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -6111,15 +6114,15 @@ impl ::protobuf::reflect::ProtobufValue for SwitchCommandRequest {
 pub struct ListEntitiesTextSensorResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesTextSensorResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesTextSensorResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesTextSensorResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesTextSensorResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesTextSensorResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesTextSensorResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesTextSensorResponse.entity_category)
@@ -6129,7 +6132,7 @@ pub struct ListEntitiesTextSensorResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesTextSensorResponse {
+impl<'a> Default for &'a ListEntitiesTextSensorResponse {
     fn default() -> &'a ListEntitiesTextSensorResponse {
         <ListEntitiesTextSensorResponse as ::protobuf::Message>::default_instance()
     }
@@ -6137,12 +6140,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesTextSensorResponse {
 
 impl ListEntitiesTextSensorResponse {
     pub fn new() -> ListEntitiesTextSensorResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(7);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(7);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesTextSensorResponse| { &m.object_id },
@@ -6306,11 +6309,11 @@ impl ::protobuf::Message for ListEntitiesTextSensorResponse {
 
     fn default_instance() -> &'static ListEntitiesTextSensorResponse {
         static instance: ListEntitiesTextSensorResponse = ListEntitiesTextSensorResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            icon: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            icon: String::new(),
             disabled_by_default: false,
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
@@ -6326,8 +6329,8 @@ impl ::protobuf::MessageFull for ListEntitiesTextSensorResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesTextSensorResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesTextSensorResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -6343,7 +6346,7 @@ pub struct TextSensorStateResponse {
     // @@protoc_insertion_point(field:TextSensorStateResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:TextSensorStateResponse.state)
-    pub state: ::std::string::String,
+    pub state: String,
     ///  If the text sensor does not have a valid state yet.
     ///  Equivalent to `!obj->has_state()` - inverse logic to make state packets smaller
     // @@protoc_insertion_point(field:TextSensorStateResponse.missing_state)
@@ -6353,7 +6356,7 @@ pub struct TextSensorStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a TextSensorStateResponse {
+impl<'a> Default for &'a TextSensorStateResponse {
     fn default() -> &'a TextSensorStateResponse {
         <TextSensorStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -6361,12 +6364,12 @@ impl<'a> ::std::default::Default for &'a TextSensorStateResponse {
 
 impl TextSensorStateResponse {
     pub fn new() -> TextSensorStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &TextSensorStateResponse| { &m.key },
@@ -6471,7 +6474,7 @@ impl ::protobuf::Message for TextSensorStateResponse {
     fn default_instance() -> &'static TextSensorStateResponse {
         static instance: TextSensorStateResponse = TextSensorStateResponse {
             key: 0,
-            state: ::std::string::String::new(),
+            state: String::new(),
             missing_state: false,
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -6486,8 +6489,8 @@ impl ::protobuf::MessageFull for TextSensorStateResponse {
     }
 }
 
-impl ::std::fmt::Display for TextSensorStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for TextSensorStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -6509,7 +6512,7 @@ pub struct SubscribeLogsRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SubscribeLogsRequest {
+impl<'a> Default for &'a SubscribeLogsRequest {
     fn default() -> &'a SubscribeLogsRequest {
         <SubscribeLogsRequest as ::protobuf::Message>::default_instance()
     }
@@ -6517,12 +6520,12 @@ impl<'a> ::std::default::Default for &'a SubscribeLogsRequest {
 
 impl SubscribeLogsRequest {
     pub fn new() -> SubscribeLogsRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "level",
             |m: &SubscribeLogsRequest| { &m.level },
@@ -6626,8 +6629,8 @@ impl ::protobuf::MessageFull for SubscribeLogsRequest {
     }
 }
 
-impl ::std::fmt::Display for SubscribeLogsRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SubscribeLogsRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -6643,7 +6646,7 @@ pub struct SubscribeLogsResponse {
     // @@protoc_insertion_point(field:SubscribeLogsResponse.level)
     pub level: ::protobuf::EnumOrUnknown<LogLevel>,
     // @@protoc_insertion_point(field:SubscribeLogsResponse.message)
-    pub message: ::std::string::String,
+    pub message: String,
     // @@protoc_insertion_point(field:SubscribeLogsResponse.send_failed)
     pub send_failed: bool,
     // special fields
@@ -6651,7 +6654,7 @@ pub struct SubscribeLogsResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SubscribeLogsResponse {
+impl<'a> Default for &'a SubscribeLogsResponse {
     fn default() -> &'a SubscribeLogsResponse {
         <SubscribeLogsResponse as ::protobuf::Message>::default_instance()
     }
@@ -6659,12 +6662,12 @@ impl<'a> ::std::default::Default for &'a SubscribeLogsResponse {
 
 impl SubscribeLogsResponse {
     pub fn new() -> SubscribeLogsResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "level",
             |m: &SubscribeLogsResponse| { &m.level },
@@ -6769,7 +6772,7 @@ impl ::protobuf::Message for SubscribeLogsResponse {
     fn default_instance() -> &'static SubscribeLogsResponse {
         static instance: SubscribeLogsResponse = SubscribeLogsResponse {
             level: ::protobuf::EnumOrUnknown::from_i32(0),
-            message: ::std::string::String::new(),
+            message: String::new(),
             send_failed: false,
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -6784,8 +6787,8 @@ impl ::protobuf::MessageFull for SubscribeLogsResponse {
     }
 }
 
-impl ::std::fmt::Display for SubscribeLogsResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SubscribeLogsResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -6803,7 +6806,7 @@ pub struct SubscribeHomeassistantServicesRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SubscribeHomeassistantServicesRequest {
+impl<'a> Default for &'a SubscribeHomeassistantServicesRequest {
     fn default() -> &'a SubscribeHomeassistantServicesRequest {
         <SubscribeHomeassistantServicesRequest as ::protobuf::Message>::default_instance()
     }
@@ -6811,12 +6814,12 @@ impl<'a> ::std::default::Default for &'a SubscribeHomeassistantServicesRequest {
 
 impl SubscribeHomeassistantServicesRequest {
     pub fn new() -> SubscribeHomeassistantServicesRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<SubscribeHomeassistantServicesRequest>(
             "SubscribeHomeassistantServicesRequest",
             fields,
@@ -6888,8 +6891,8 @@ impl ::protobuf::MessageFull for SubscribeHomeassistantServicesRequest {
     }
 }
 
-impl ::std::fmt::Display for SubscribeHomeassistantServicesRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SubscribeHomeassistantServicesRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -6903,15 +6906,15 @@ impl ::protobuf::reflect::ProtobufValue for SubscribeHomeassistantServicesReques
 pub struct HomeassistantServiceMap {
     // message fields
     // @@protoc_insertion_point(field:HomeassistantServiceMap.key)
-    pub key: ::std::string::String,
+    pub key: String,
     // @@protoc_insertion_point(field:HomeassistantServiceMap.value)
-    pub value: ::std::string::String,
+    pub value: String,
     // special fields
     // @@protoc_insertion_point(special_field:HomeassistantServiceMap.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a HomeassistantServiceMap {
+impl<'a> Default for &'a HomeassistantServiceMap {
     fn default() -> &'a HomeassistantServiceMap {
         <HomeassistantServiceMap as ::protobuf::Message>::default_instance()
     }
@@ -6919,12 +6922,12 @@ impl<'a> ::std::default::Default for &'a HomeassistantServiceMap {
 
 impl HomeassistantServiceMap {
     pub fn new() -> HomeassistantServiceMap {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &HomeassistantServiceMap| { &m.key },
@@ -7013,8 +7016,8 @@ impl ::protobuf::Message for HomeassistantServiceMap {
 
     fn default_instance() -> &'static HomeassistantServiceMap {
         static instance: HomeassistantServiceMap = HomeassistantServiceMap {
-            key: ::std::string::String::new(),
-            value: ::std::string::String::new(),
+            key: String::new(),
+            value: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -7028,8 +7031,8 @@ impl ::protobuf::MessageFull for HomeassistantServiceMap {
     }
 }
 
-impl ::std::fmt::Display for HomeassistantServiceMap {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for HomeassistantServiceMap {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -7043,13 +7046,13 @@ impl ::protobuf::reflect::ProtobufValue for HomeassistantServiceMap {
 pub struct HomeassistantServiceResponse {
     // message fields
     // @@protoc_insertion_point(field:HomeassistantServiceResponse.service)
-    pub service: ::std::string::String,
+    pub service: String,
     // @@protoc_insertion_point(field:HomeassistantServiceResponse.data)
-    pub data: ::std::vec::Vec<HomeassistantServiceMap>,
+    pub data: Vec<HomeassistantServiceMap>,
     // @@protoc_insertion_point(field:HomeassistantServiceResponse.data_template)
-    pub data_template: ::std::vec::Vec<HomeassistantServiceMap>,
+    pub data_template: Vec<HomeassistantServiceMap>,
     // @@protoc_insertion_point(field:HomeassistantServiceResponse.variables)
-    pub variables: ::std::vec::Vec<HomeassistantServiceMap>,
+    pub variables: Vec<HomeassistantServiceMap>,
     // @@protoc_insertion_point(field:HomeassistantServiceResponse.is_event)
     pub is_event: bool,
     // special fields
@@ -7057,7 +7060,7 @@ pub struct HomeassistantServiceResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a HomeassistantServiceResponse {
+impl<'a> Default for &'a HomeassistantServiceResponse {
     fn default() -> &'a HomeassistantServiceResponse {
         <HomeassistantServiceResponse as ::protobuf::Message>::default_instance()
     }
@@ -7065,12 +7068,12 @@ impl<'a> ::std::default::Default for &'a HomeassistantServiceResponse {
 
 impl HomeassistantServiceResponse {
     pub fn new() -> HomeassistantServiceResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(5);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(5);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "service",
             |m: &HomeassistantServiceResponse| { &m.service },
@@ -7207,10 +7210,10 @@ impl ::protobuf::Message for HomeassistantServiceResponse {
 
     fn default_instance() -> &'static HomeassistantServiceResponse {
         static instance: HomeassistantServiceResponse = HomeassistantServiceResponse {
-            service: ::std::string::String::new(),
-            data: ::std::vec::Vec::new(),
-            data_template: ::std::vec::Vec::new(),
-            variables: ::std::vec::Vec::new(),
+            service: String::new(),
+            data: Vec::new(),
+            data_template: Vec::new(),
+            variables: Vec::new(),
             is_event: false,
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -7225,8 +7228,8 @@ impl ::protobuf::MessageFull for HomeassistantServiceResponse {
     }
 }
 
-impl ::std::fmt::Display for HomeassistantServiceResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for HomeassistantServiceResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -7236,9 +7239,9 @@ impl ::protobuf::reflect::ProtobufValue for HomeassistantServiceResponse {
 }
 
 ///  ==================== IMPORT HOME ASSISTANT STATES ====================
-///  1. Client sends SubscribeHomeAssistantStatesRequest
-///  2. Server responds with zero or more SubscribeHomeAssistantStateResponse (async)
-///  3. Client sends HomeAssistantStateResponse for state changes.
+///  1. Client sends `SubscribeHomeAssistantStatesRequest`
+///  2. Server responds with zero or more `SubscribeHomeAssistantStateResponse` (async)
+///  3. Client sends `HomeAssistantStateResponse` for state changes.
 #[derive(PartialEq,Clone,Default,Debug)]
 // @@protoc_insertion_point(message:SubscribeHomeAssistantStatesRequest)
 pub struct SubscribeHomeAssistantStatesRequest {
@@ -7247,7 +7250,7 @@ pub struct SubscribeHomeAssistantStatesRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SubscribeHomeAssistantStatesRequest {
+impl<'a> Default for &'a SubscribeHomeAssistantStatesRequest {
     fn default() -> &'a SubscribeHomeAssistantStatesRequest {
         <SubscribeHomeAssistantStatesRequest as ::protobuf::Message>::default_instance()
     }
@@ -7255,12 +7258,12 @@ impl<'a> ::std::default::Default for &'a SubscribeHomeAssistantStatesRequest {
 
 impl SubscribeHomeAssistantStatesRequest {
     pub fn new() -> SubscribeHomeAssistantStatesRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<SubscribeHomeAssistantStatesRequest>(
             "SubscribeHomeAssistantStatesRequest",
             fields,
@@ -7332,8 +7335,8 @@ impl ::protobuf::MessageFull for SubscribeHomeAssistantStatesRequest {
     }
 }
 
-impl ::std::fmt::Display for SubscribeHomeAssistantStatesRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SubscribeHomeAssistantStatesRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -7347,15 +7350,15 @@ impl ::protobuf::reflect::ProtobufValue for SubscribeHomeAssistantStatesRequest 
 pub struct SubscribeHomeAssistantStateResponse {
     // message fields
     // @@protoc_insertion_point(field:SubscribeHomeAssistantStateResponse.entity_id)
-    pub entity_id: ::std::string::String,
+    pub entity_id: String,
     // @@protoc_insertion_point(field:SubscribeHomeAssistantStateResponse.attribute)
-    pub attribute: ::std::string::String,
+    pub attribute: String,
     // special fields
     // @@protoc_insertion_point(special_field:SubscribeHomeAssistantStateResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SubscribeHomeAssistantStateResponse {
+impl<'a> Default for &'a SubscribeHomeAssistantStateResponse {
     fn default() -> &'a SubscribeHomeAssistantStateResponse {
         <SubscribeHomeAssistantStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -7363,12 +7366,12 @@ impl<'a> ::std::default::Default for &'a SubscribeHomeAssistantStateResponse {
 
 impl SubscribeHomeAssistantStateResponse {
     pub fn new() -> SubscribeHomeAssistantStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "entity_id",
             |m: &SubscribeHomeAssistantStateResponse| { &m.entity_id },
@@ -7457,8 +7460,8 @@ impl ::protobuf::Message for SubscribeHomeAssistantStateResponse {
 
     fn default_instance() -> &'static SubscribeHomeAssistantStateResponse {
         static instance: SubscribeHomeAssistantStateResponse = SubscribeHomeAssistantStateResponse {
-            entity_id: ::std::string::String::new(),
-            attribute: ::std::string::String::new(),
+            entity_id: String::new(),
+            attribute: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -7472,8 +7475,8 @@ impl ::protobuf::MessageFull for SubscribeHomeAssistantStateResponse {
     }
 }
 
-impl ::std::fmt::Display for SubscribeHomeAssistantStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SubscribeHomeAssistantStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -7487,17 +7490,17 @@ impl ::protobuf::reflect::ProtobufValue for SubscribeHomeAssistantStateResponse 
 pub struct HomeAssistantStateResponse {
     // message fields
     // @@protoc_insertion_point(field:HomeAssistantStateResponse.entity_id)
-    pub entity_id: ::std::string::String,
+    pub entity_id: String,
     // @@protoc_insertion_point(field:HomeAssistantStateResponse.state)
-    pub state: ::std::string::String,
+    pub state: String,
     // @@protoc_insertion_point(field:HomeAssistantStateResponse.attribute)
-    pub attribute: ::std::string::String,
+    pub attribute: String,
     // special fields
     // @@protoc_insertion_point(special_field:HomeAssistantStateResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a HomeAssistantStateResponse {
+impl<'a> Default for &'a HomeAssistantStateResponse {
     fn default() -> &'a HomeAssistantStateResponse {
         <HomeAssistantStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -7505,12 +7508,12 @@ impl<'a> ::std::default::Default for &'a HomeAssistantStateResponse {
 
 impl HomeAssistantStateResponse {
     pub fn new() -> HomeAssistantStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "entity_id",
             |m: &HomeAssistantStateResponse| { &m.entity_id },
@@ -7614,9 +7617,9 @@ impl ::protobuf::Message for HomeAssistantStateResponse {
 
     fn default_instance() -> &'static HomeAssistantStateResponse {
         static instance: HomeAssistantStateResponse = HomeAssistantStateResponse {
-            entity_id: ::std::string::String::new(),
-            state: ::std::string::String::new(),
-            attribute: ::std::string::String::new(),
+            entity_id: String::new(),
+            state: String::new(),
+            attribute: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -7630,8 +7633,8 @@ impl ::protobuf::MessageFull for HomeAssistantStateResponse {
     }
 }
 
-impl ::std::fmt::Display for HomeAssistantStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for HomeAssistantStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -7649,7 +7652,7 @@ pub struct GetTimeRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a GetTimeRequest {
+impl<'a> Default for &'a GetTimeRequest {
     fn default() -> &'a GetTimeRequest {
         <GetTimeRequest as ::protobuf::Message>::default_instance()
     }
@@ -7657,12 +7660,12 @@ impl<'a> ::std::default::Default for &'a GetTimeRequest {
 
 impl GetTimeRequest {
     pub fn new() -> GetTimeRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<GetTimeRequest>(
             "GetTimeRequest",
             fields,
@@ -7734,8 +7737,8 @@ impl ::protobuf::MessageFull for GetTimeRequest {
     }
 }
 
-impl ::std::fmt::Display for GetTimeRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for GetTimeRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -7755,7 +7758,7 @@ pub struct GetTimeResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a GetTimeResponse {
+impl<'a> Default for &'a GetTimeResponse {
     fn default() -> &'a GetTimeResponse {
         <GetTimeResponse as ::protobuf::Message>::default_instance()
     }
@@ -7763,12 +7766,12 @@ impl<'a> ::std::default::Default for &'a GetTimeResponse {
 
 impl GetTimeResponse {
     pub fn new() -> GetTimeResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(1);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(1);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "epoch_seconds",
             |m: &GetTimeResponse| { &m.epoch_seconds },
@@ -7856,8 +7859,8 @@ impl ::protobuf::MessageFull for GetTimeResponse {
     }
 }
 
-impl ::std::fmt::Display for GetTimeResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for GetTimeResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -7871,7 +7874,7 @@ impl ::protobuf::reflect::ProtobufValue for GetTimeResponse {
 pub struct ListEntitiesServicesArgument {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesServicesArgument.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesServicesArgument.type)
     pub type_: ::protobuf::EnumOrUnknown<ServiceArgType>,
     // special fields
@@ -7879,7 +7882,7 @@ pub struct ListEntitiesServicesArgument {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesServicesArgument {
+impl<'a> Default for &'a ListEntitiesServicesArgument {
     fn default() -> &'a ListEntitiesServicesArgument {
         <ListEntitiesServicesArgument as ::protobuf::Message>::default_instance()
     }
@@ -7887,12 +7890,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesServicesArgument {
 
 impl ListEntitiesServicesArgument {
     pub fn new() -> ListEntitiesServicesArgument {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "name",
             |m: &ListEntitiesServicesArgument| { &m.name },
@@ -7981,7 +7984,7 @@ impl ::protobuf::Message for ListEntitiesServicesArgument {
 
     fn default_instance() -> &'static ListEntitiesServicesArgument {
         static instance: ListEntitiesServicesArgument = ListEntitiesServicesArgument {
-            name: ::std::string::String::new(),
+            name: String::new(),
             type_: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -7996,8 +7999,8 @@ impl ::protobuf::MessageFull for ListEntitiesServicesArgument {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesServicesArgument {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesServicesArgument {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -8011,17 +8014,17 @@ impl ::protobuf::reflect::ProtobufValue for ListEntitiesServicesArgument {
 pub struct ListEntitiesServicesResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesServicesResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesServicesResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesServicesResponse.args)
-    pub args: ::std::vec::Vec<ListEntitiesServicesArgument>,
+    pub args: Vec<ListEntitiesServicesArgument>,
     // special fields
     // @@protoc_insertion_point(special_field:ListEntitiesServicesResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesServicesResponse {
+impl<'a> Default for &'a ListEntitiesServicesResponse {
     fn default() -> &'a ListEntitiesServicesResponse {
         <ListEntitiesServicesResponse as ::protobuf::Message>::default_instance()
     }
@@ -8029,12 +8032,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesServicesResponse {
 
 impl ListEntitiesServicesResponse {
     pub fn new() -> ListEntitiesServicesResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "name",
             |m: &ListEntitiesServicesResponse| { &m.name },
@@ -8139,9 +8142,9 @@ impl ::protobuf::Message for ListEntitiesServicesResponse {
 
     fn default_instance() -> &'static ListEntitiesServicesResponse {
         static instance: ListEntitiesServicesResponse = ListEntitiesServicesResponse {
-            name: ::std::string::String::new(),
+            name: String::new(),
             key: 0,
-            args: ::std::vec::Vec::new(),
+            args: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -8155,8 +8158,8 @@ impl ::protobuf::MessageFull for ListEntitiesServicesResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesServicesResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesServicesResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -8176,24 +8179,24 @@ pub struct ExecuteServiceArgument {
     // @@protoc_insertion_point(field:ExecuteServiceArgument.float_)
     pub float_: f32,
     // @@protoc_insertion_point(field:ExecuteServiceArgument.string_)
-    pub string_: ::std::string::String,
+    pub string_: String,
     ///  ESPHome 1.14 (api v1.3) make int a signed value
     // @@protoc_insertion_point(field:ExecuteServiceArgument.int_)
     pub int_: i32,
     // @@protoc_insertion_point(field:ExecuteServiceArgument.bool_array)
-    pub bool_array: ::std::vec::Vec<bool>,
+    pub bool_array: Vec<bool>,
     // @@protoc_insertion_point(field:ExecuteServiceArgument.int_array)
-    pub int_array: ::std::vec::Vec<i32>,
+    pub int_array: Vec<i32>,
     // @@protoc_insertion_point(field:ExecuteServiceArgument.float_array)
-    pub float_array: ::std::vec::Vec<f32>,
+    pub float_array: Vec<f32>,
     // @@protoc_insertion_point(field:ExecuteServiceArgument.string_array)
-    pub string_array: ::std::vec::Vec<::std::string::String>,
+    pub string_array: Vec<String>,
     // special fields
     // @@protoc_insertion_point(special_field:ExecuteServiceArgument.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ExecuteServiceArgument {
+impl<'a> Default for &'a ExecuteServiceArgument {
     fn default() -> &'a ExecuteServiceArgument {
         <ExecuteServiceArgument as ::protobuf::Message>::default_instance()
     }
@@ -8201,12 +8204,12 @@ impl<'a> ::std::default::Default for &'a ExecuteServiceArgument {
 
 impl ExecuteServiceArgument {
     pub fn new() -> ExecuteServiceArgument {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(9);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(9);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "bool_",
             |m: &ExecuteServiceArgument| { &m.bool_ },
@@ -8408,12 +8411,12 @@ impl ::protobuf::Message for ExecuteServiceArgument {
             bool_: false,
             legacy_int: 0,
             float_: 0.,
-            string_: ::std::string::String::new(),
+            string_: String::new(),
             int_: 0,
-            bool_array: ::std::vec::Vec::new(),
-            int_array: ::std::vec::Vec::new(),
-            float_array: ::std::vec::Vec::new(),
-            string_array: ::std::vec::Vec::new(),
+            bool_array: Vec::new(),
+            int_array: Vec::new(),
+            float_array: Vec::new(),
+            string_array: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -8427,8 +8430,8 @@ impl ::protobuf::MessageFull for ExecuteServiceArgument {
     }
 }
 
-impl ::std::fmt::Display for ExecuteServiceArgument {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ExecuteServiceArgument {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -8444,13 +8447,13 @@ pub struct ExecuteServiceRequest {
     // @@protoc_insertion_point(field:ExecuteServiceRequest.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ExecuteServiceRequest.args)
-    pub args: ::std::vec::Vec<ExecuteServiceArgument>,
+    pub args: Vec<ExecuteServiceArgument>,
     // special fields
     // @@protoc_insertion_point(special_field:ExecuteServiceRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ExecuteServiceRequest {
+impl<'a> Default for &'a ExecuteServiceRequest {
     fn default() -> &'a ExecuteServiceRequest {
         <ExecuteServiceRequest as ::protobuf::Message>::default_instance()
     }
@@ -8458,12 +8461,12 @@ impl<'a> ::std::default::Default for &'a ExecuteServiceRequest {
 
 impl ExecuteServiceRequest {
     pub fn new() -> ExecuteServiceRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &ExecuteServiceRequest| { &m.key },
@@ -8554,7 +8557,7 @@ impl ::protobuf::Message for ExecuteServiceRequest {
     fn default_instance() -> &'static ExecuteServiceRequest {
         static instance: ExecuteServiceRequest = ExecuteServiceRequest {
             key: 0,
-            args: ::std::vec::Vec::new(),
+            args: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -8568,8 +8571,8 @@ impl ::protobuf::MessageFull for ExecuteServiceRequest {
     }
 }
 
-impl ::std::fmt::Display for ExecuteServiceRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ExecuteServiceRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -8584,17 +8587,17 @@ impl ::protobuf::reflect::ProtobufValue for ExecuteServiceRequest {
 pub struct ListEntitiesCameraResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesCameraResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesCameraResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesCameraResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesCameraResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesCameraResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesCameraResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesCameraResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // special fields
@@ -8602,7 +8605,7 @@ pub struct ListEntitiesCameraResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesCameraResponse {
+impl<'a> Default for &'a ListEntitiesCameraResponse {
     fn default() -> &'a ListEntitiesCameraResponse {
         <ListEntitiesCameraResponse as ::protobuf::Message>::default_instance()
     }
@@ -8610,12 +8613,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesCameraResponse {
 
 impl ListEntitiesCameraResponse {
     pub fn new() -> ListEntitiesCameraResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(7);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(7);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesCameraResponse| { &m.object_id },
@@ -8779,12 +8782,12 @@ impl ::protobuf::Message for ListEntitiesCameraResponse {
 
     fn default_instance() -> &'static ListEntitiesCameraResponse {
         static instance: ListEntitiesCameraResponse = ListEntitiesCameraResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
             disabled_by_default: false,
-            icon: ::std::string::String::new(),
+            icon: String::new(),
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -8799,8 +8802,8 @@ impl ::protobuf::MessageFull for ListEntitiesCameraResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesCameraResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesCameraResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -8816,7 +8819,7 @@ pub struct CameraImageResponse {
     // @@protoc_insertion_point(field:CameraImageResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:CameraImageResponse.data)
-    pub data: ::std::vec::Vec<u8>,
+    pub data: Vec<u8>,
     // @@protoc_insertion_point(field:CameraImageResponse.done)
     pub done: bool,
     // special fields
@@ -8824,7 +8827,7 @@ pub struct CameraImageResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a CameraImageResponse {
+impl<'a> Default for &'a CameraImageResponse {
     fn default() -> &'a CameraImageResponse {
         <CameraImageResponse as ::protobuf::Message>::default_instance()
     }
@@ -8832,12 +8835,12 @@ impl<'a> ::std::default::Default for &'a CameraImageResponse {
 
 impl CameraImageResponse {
     pub fn new() -> CameraImageResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &CameraImageResponse| { &m.key },
@@ -8942,7 +8945,7 @@ impl ::protobuf::Message for CameraImageResponse {
     fn default_instance() -> &'static CameraImageResponse {
         static instance: CameraImageResponse = CameraImageResponse {
             key: 0,
-            data: ::std::vec::Vec::new(),
+            data: Vec::new(),
             done: false,
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -8957,8 +8960,8 @@ impl ::protobuf::MessageFull for CameraImageResponse {
     }
 }
 
-impl ::std::fmt::Display for CameraImageResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for CameraImageResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -8980,7 +8983,7 @@ pub struct CameraImageRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a CameraImageRequest {
+impl<'a> Default for &'a CameraImageRequest {
     fn default() -> &'a CameraImageRequest {
         <CameraImageRequest as ::protobuf::Message>::default_instance()
     }
@@ -8988,12 +8991,12 @@ impl<'a> ::std::default::Default for &'a CameraImageRequest {
 
 impl CameraImageRequest {
     pub fn new() -> CameraImageRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "single",
             |m: &CameraImageRequest| { &m.single },
@@ -9097,8 +9100,8 @@ impl ::protobuf::MessageFull for CameraImageRequest {
     }
 }
 
-impl ::std::fmt::Display for CameraImageRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for CameraImageRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -9112,19 +9115,19 @@ impl ::protobuf::reflect::ProtobufValue for CameraImageRequest {
 pub struct ListEntitiesClimateResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supports_current_temperature)
     pub supports_current_temperature: bool,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supports_two_point_target_temperature)
     pub supports_two_point_target_temperature: bool,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supported_modes)
-    pub supported_modes: ::std::vec::Vec<::protobuf::EnumOrUnknown<ClimateMode>>,
+    pub supported_modes: Vec<::protobuf::EnumOrUnknown<ClimateMode>>,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.visual_min_temperature)
     pub visual_min_temperature: f32,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.visual_max_temperature)
@@ -9138,19 +9141,19 @@ pub struct ListEntitiesClimateResponse {
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supports_action)
     pub supports_action: bool,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supported_fan_modes)
-    pub supported_fan_modes: ::std::vec::Vec<::protobuf::EnumOrUnknown<ClimateFanMode>>,
+    pub supported_fan_modes: Vec<::protobuf::EnumOrUnknown<ClimateFanMode>>,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supported_swing_modes)
-    pub supported_swing_modes: ::std::vec::Vec<::protobuf::EnumOrUnknown<ClimateSwingMode>>,
+    pub supported_swing_modes: Vec<::protobuf::EnumOrUnknown<ClimateSwingMode>>,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supported_custom_fan_modes)
-    pub supported_custom_fan_modes: ::std::vec::Vec<::std::string::String>,
+    pub supported_custom_fan_modes: Vec<String>,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supported_presets)
-    pub supported_presets: ::std::vec::Vec<::protobuf::EnumOrUnknown<ClimatePreset>>,
+    pub supported_presets: Vec<::protobuf::EnumOrUnknown<ClimatePreset>>,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.supported_custom_presets)
-    pub supported_custom_presets: ::std::vec::Vec<::std::string::String>,
+    pub supported_custom_presets: Vec<String>,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesClimateResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // special fields
@@ -9158,7 +9161,7 @@ pub struct ListEntitiesClimateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesClimateResponse {
+impl<'a> Default for &'a ListEntitiesClimateResponse {
     fn default() -> &'a ListEntitiesClimateResponse {
         <ListEntitiesClimateResponse as ::protobuf::Message>::default_instance()
     }
@@ -9166,12 +9169,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesClimateResponse {
 
 impl ListEntitiesClimateResponse {
     pub fn new() -> ListEntitiesClimateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(20);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(20);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesClimateResponse| { &m.object_id },
@@ -9312,7 +9315,7 @@ impl ::protobuf::Message for ListEntitiesClimateResponse {
                     self.supported_modes.push(is.read_enum_or_unknown()?);
                 },
                 58 => {
-                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_modes)?
+                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_modes)?;
                 },
                 69 => {
                     self.visual_min_temperature = is.read_float()?;
@@ -9333,13 +9336,13 @@ impl ::protobuf::Message for ListEntitiesClimateResponse {
                     self.supported_fan_modes.push(is.read_enum_or_unknown()?);
                 },
                 106 => {
-                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_fan_modes)?
+                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_fan_modes)?;
                 },
                 112 => {
                     self.supported_swing_modes.push(is.read_enum_or_unknown()?);
                 },
                 114 => {
-                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_swing_modes)?
+                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_swing_modes)?;
                 },
                 122 => {
                     self.supported_custom_fan_modes.push(is.read_string()?);
@@ -9348,7 +9351,7 @@ impl ::protobuf::Message for ListEntitiesClimateResponse {
                     self.supported_presets.push(is.read_enum_or_unknown()?);
                 },
                 130 => {
-                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_presets)?
+                    ::protobuf::rt::read_repeated_packed_enum_or_unknown_into(is, &mut self.supported_presets)?;
                 },
                 138 => {
                     self.supported_custom_presets.push(is.read_string()?);
@@ -9542,25 +9545,25 @@ impl ::protobuf::Message for ListEntitiesClimateResponse {
 
     fn default_instance() -> &'static ListEntitiesClimateResponse {
         static instance: ListEntitiesClimateResponse = ListEntitiesClimateResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
             supports_current_temperature: false,
             supports_two_point_target_temperature: false,
-            supported_modes: ::std::vec::Vec::new(),
+            supported_modes: Vec::new(),
             visual_min_temperature: 0.,
             visual_max_temperature: 0.,
             visual_temperature_step: 0.,
             legacy_supports_away: false,
             supports_action: false,
-            supported_fan_modes: ::std::vec::Vec::new(),
-            supported_swing_modes: ::std::vec::Vec::new(),
-            supported_custom_fan_modes: ::std::vec::Vec::new(),
-            supported_presets: ::std::vec::Vec::new(),
-            supported_custom_presets: ::std::vec::Vec::new(),
+            supported_fan_modes: Vec::new(),
+            supported_swing_modes: Vec::new(),
+            supported_custom_fan_modes: Vec::new(),
+            supported_presets: Vec::new(),
+            supported_custom_presets: Vec::new(),
             disabled_by_default: false,
-            icon: ::std::string::String::new(),
+            icon: String::new(),
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -9575,8 +9578,8 @@ impl ::protobuf::MessageFull for ListEntitiesClimateResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesClimateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesClimateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -9611,17 +9614,17 @@ pub struct ClimateStateResponse {
     // @@protoc_insertion_point(field:ClimateStateResponse.swing_mode)
     pub swing_mode: ::protobuf::EnumOrUnknown<ClimateSwingMode>,
     // @@protoc_insertion_point(field:ClimateStateResponse.custom_fan_mode)
-    pub custom_fan_mode: ::std::string::String,
+    pub custom_fan_mode: String,
     // @@protoc_insertion_point(field:ClimateStateResponse.preset)
     pub preset: ::protobuf::EnumOrUnknown<ClimatePreset>,
     // @@protoc_insertion_point(field:ClimateStateResponse.custom_preset)
-    pub custom_preset: ::std::string::String,
+    pub custom_preset: String,
     // special fields
     // @@protoc_insertion_point(special_field:ClimateStateResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ClimateStateResponse {
+impl<'a> Default for &'a ClimateStateResponse {
     fn default() -> &'a ClimateStateResponse {
         <ClimateStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -9629,12 +9632,12 @@ impl<'a> ::std::default::Default for &'a ClimateStateResponse {
 
 impl ClimateStateResponse {
     pub fn new() -> ClimateStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(13);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(13);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &ClimateStateResponse| { &m.key },
@@ -9898,9 +9901,9 @@ impl ::protobuf::Message for ClimateStateResponse {
             action: ::protobuf::EnumOrUnknown::from_i32(0),
             fan_mode: ::protobuf::EnumOrUnknown::from_i32(0),
             swing_mode: ::protobuf::EnumOrUnknown::from_i32(0),
-            custom_fan_mode: ::std::string::String::new(),
+            custom_fan_mode: String::new(),
             preset: ::protobuf::EnumOrUnknown::from_i32(0),
-            custom_preset: ::std::string::String::new(),
+            custom_preset: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -9914,8 +9917,8 @@ impl ::protobuf::MessageFull for ClimateStateResponse {
     }
 }
 
-impl ::std::fmt::Display for ClimateStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ClimateStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -9962,7 +9965,7 @@ pub struct ClimateCommandRequest {
     // @@protoc_insertion_point(field:ClimateCommandRequest.has_custom_fan_mode)
     pub has_custom_fan_mode: bool,
     // @@protoc_insertion_point(field:ClimateCommandRequest.custom_fan_mode)
-    pub custom_fan_mode: ::std::string::String,
+    pub custom_fan_mode: String,
     // @@protoc_insertion_point(field:ClimateCommandRequest.has_preset)
     pub has_preset: bool,
     // @@protoc_insertion_point(field:ClimateCommandRequest.preset)
@@ -9970,13 +9973,13 @@ pub struct ClimateCommandRequest {
     // @@protoc_insertion_point(field:ClimateCommandRequest.has_custom_preset)
     pub has_custom_preset: bool,
     // @@protoc_insertion_point(field:ClimateCommandRequest.custom_preset)
-    pub custom_preset: ::std::string::String,
+    pub custom_preset: String,
     // special fields
     // @@protoc_insertion_point(special_field:ClimateCommandRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ClimateCommandRequest {
+impl<'a> Default for &'a ClimateCommandRequest {
     fn default() -> &'a ClimateCommandRequest {
         <ClimateCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -9984,12 +9987,12 @@ impl<'a> ::std::default::Default for &'a ClimateCommandRequest {
 
 impl ClimateCommandRequest {
     pub fn new() -> ClimateCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(21);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(21);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &ClimateCommandRequest| { &m.key },
@@ -10379,11 +10382,11 @@ impl ::protobuf::Message for ClimateCommandRequest {
             has_swing_mode: false,
             swing_mode: ::protobuf::EnumOrUnknown::from_i32(0),
             has_custom_fan_mode: false,
-            custom_fan_mode: ::std::string::String::new(),
+            custom_fan_mode: String::new(),
             has_preset: false,
             preset: ::protobuf::EnumOrUnknown::from_i32(0),
             has_custom_preset: false,
-            custom_preset: ::std::string::String::new(),
+            custom_preset: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -10397,8 +10400,8 @@ impl ::protobuf::MessageFull for ClimateCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for ClimateCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ClimateCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -10412,15 +10415,15 @@ impl ::protobuf::reflect::ProtobufValue for ClimateCommandRequest {
 pub struct ListEntitiesNumberResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.min_value)
     pub min_value: f32,
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.max_value)
@@ -10432,7 +10435,7 @@ pub struct ListEntitiesNumberResponse {
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.unit_of_measurement)
-    pub unit_of_measurement: ::std::string::String,
+    pub unit_of_measurement: String,
     // @@protoc_insertion_point(field:ListEntitiesNumberResponse.mode)
     pub mode: ::protobuf::EnumOrUnknown<NumberMode>,
     // special fields
@@ -10440,7 +10443,7 @@ pub struct ListEntitiesNumberResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesNumberResponse {
+impl<'a> Default for &'a ListEntitiesNumberResponse {
     fn default() -> &'a ListEntitiesNumberResponse {
         <ListEntitiesNumberResponse as ::protobuf::Message>::default_instance()
     }
@@ -10448,12 +10451,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesNumberResponse {
 
 impl ListEntitiesNumberResponse {
     pub fn new() -> ListEntitiesNumberResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(12);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(12);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesNumberResponse| { &m.object_id },
@@ -10692,17 +10695,17 @@ impl ::protobuf::Message for ListEntitiesNumberResponse {
 
     fn default_instance() -> &'static ListEntitiesNumberResponse {
         static instance: ListEntitiesNumberResponse = ListEntitiesNumberResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            icon: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            icon: String::new(),
             min_value: 0.,
             max_value: 0.,
             step: 0.,
             disabled_by_default: false,
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
-            unit_of_measurement: ::std::string::String::new(),
+            unit_of_measurement: String::new(),
             mode: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -10717,8 +10720,8 @@ impl ::protobuf::MessageFull for ListEntitiesNumberResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesNumberResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesNumberResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -10744,7 +10747,7 @@ pub struct NumberStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a NumberStateResponse {
+impl<'a> Default for &'a NumberStateResponse {
     fn default() -> &'a NumberStateResponse {
         <NumberStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -10752,12 +10755,12 @@ impl<'a> ::std::default::Default for &'a NumberStateResponse {
 
 impl NumberStateResponse {
     pub fn new() -> NumberStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &NumberStateResponse| { &m.key },
@@ -10877,8 +10880,8 @@ impl ::protobuf::MessageFull for NumberStateResponse {
     }
 }
 
-impl ::std::fmt::Display for NumberStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for NumberStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -10900,7 +10903,7 @@ pub struct NumberCommandRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a NumberCommandRequest {
+impl<'a> Default for &'a NumberCommandRequest {
     fn default() -> &'a NumberCommandRequest {
         <NumberCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -10908,12 +10911,12 @@ impl<'a> ::std::default::Default for &'a NumberCommandRequest {
 
 impl NumberCommandRequest {
     pub fn new() -> NumberCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &NumberCommandRequest| { &m.key },
@@ -11017,8 +11020,8 @@ impl ::protobuf::MessageFull for NumberCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for NumberCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for NumberCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -11033,17 +11036,17 @@ impl ::protobuf::reflect::ProtobufValue for NumberCommandRequest {
 pub struct ListEntitiesSelectResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesSelectResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesSelectResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesSelectResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesSelectResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesSelectResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesSelectResponse.options)
-    pub options: ::std::vec::Vec<::std::string::String>,
+    pub options: Vec<String>,
     // @@protoc_insertion_point(field:ListEntitiesSelectResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesSelectResponse.entity_category)
@@ -11053,7 +11056,7 @@ pub struct ListEntitiesSelectResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesSelectResponse {
+impl<'a> Default for &'a ListEntitiesSelectResponse {
     fn default() -> &'a ListEntitiesSelectResponse {
         <ListEntitiesSelectResponse as ::protobuf::Message>::default_instance()
     }
@@ -11061,12 +11064,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesSelectResponse {
 
 impl ListEntitiesSelectResponse {
     pub fn new() -> ListEntitiesSelectResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(8);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(8);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesSelectResponse| { &m.object_id },
@@ -11245,12 +11248,12 @@ impl ::protobuf::Message for ListEntitiesSelectResponse {
 
     fn default_instance() -> &'static ListEntitiesSelectResponse {
         static instance: ListEntitiesSelectResponse = ListEntitiesSelectResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            icon: ::std::string::String::new(),
-            options: ::std::vec::Vec::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            icon: String::new(),
+            options: Vec::new(),
             disabled_by_default: false,
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             special_fields: ::protobuf::SpecialFields::new(),
@@ -11266,8 +11269,8 @@ impl ::protobuf::MessageFull for ListEntitiesSelectResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesSelectResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesSelectResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -11283,7 +11286,7 @@ pub struct SelectStateResponse {
     // @@protoc_insertion_point(field:SelectStateResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:SelectStateResponse.state)
-    pub state: ::std::string::String,
+    pub state: String,
     ///  If the select does not have a valid state yet.
     ///  Equivalent to `!obj->has_state()` - inverse logic to make state packets smaller
     // @@protoc_insertion_point(field:SelectStateResponse.missing_state)
@@ -11293,7 +11296,7 @@ pub struct SelectStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SelectStateResponse {
+impl<'a> Default for &'a SelectStateResponse {
     fn default() -> &'a SelectStateResponse {
         <SelectStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -11301,12 +11304,12 @@ impl<'a> ::std::default::Default for &'a SelectStateResponse {
 
 impl SelectStateResponse {
     pub fn new() -> SelectStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &SelectStateResponse| { &m.key },
@@ -11411,7 +11414,7 @@ impl ::protobuf::Message for SelectStateResponse {
     fn default_instance() -> &'static SelectStateResponse {
         static instance: SelectStateResponse = SelectStateResponse {
             key: 0,
-            state: ::std::string::String::new(),
+            state: String::new(),
             missing_state: false,
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -11426,8 +11429,8 @@ impl ::protobuf::MessageFull for SelectStateResponse {
     }
 }
 
-impl ::std::fmt::Display for SelectStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SelectStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -11443,13 +11446,13 @@ pub struct SelectCommandRequest {
     // @@protoc_insertion_point(field:SelectCommandRequest.key)
     pub key: u32,
     // @@protoc_insertion_point(field:SelectCommandRequest.state)
-    pub state: ::std::string::String,
+    pub state: String,
     // special fields
     // @@protoc_insertion_point(special_field:SelectCommandRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SelectCommandRequest {
+impl<'a> Default for &'a SelectCommandRequest {
     fn default() -> &'a SelectCommandRequest {
         <SelectCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -11457,12 +11460,12 @@ impl<'a> ::std::default::Default for &'a SelectCommandRequest {
 
 impl SelectCommandRequest {
     pub fn new() -> SelectCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &SelectCommandRequest| { &m.key },
@@ -11552,7 +11555,7 @@ impl ::protobuf::Message for SelectCommandRequest {
     fn default_instance() -> &'static SelectCommandRequest {
         static instance: SelectCommandRequest = SelectCommandRequest {
             key: 0,
-            state: ::std::string::String::new(),
+            state: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -11566,8 +11569,8 @@ impl ::protobuf::MessageFull for SelectCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for SelectCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SelectCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -11581,15 +11584,15 @@ impl ::protobuf::reflect::ProtobufValue for SelectCommandRequest {
 pub struct ListEntitiesLockResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesLockResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesLockResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesLockResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesLockResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesLockResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesLockResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesLockResponse.entity_category)
@@ -11602,13 +11605,13 @@ pub struct ListEntitiesLockResponse {
     pub requires_code: bool,
     ///  Not yet implemented:
     // @@protoc_insertion_point(field:ListEntitiesLockResponse.code_format)
-    pub code_format: ::std::string::String,
+    pub code_format: String,
     // special fields
     // @@protoc_insertion_point(special_field:ListEntitiesLockResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesLockResponse {
+impl<'a> Default for &'a ListEntitiesLockResponse {
     fn default() -> &'a ListEntitiesLockResponse {
         <ListEntitiesLockResponse as ::protobuf::Message>::default_instance()
     }
@@ -11616,12 +11619,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesLockResponse {
 
 impl ListEntitiesLockResponse {
     pub fn new() -> ListEntitiesLockResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(11);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(11);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesLockResponse| { &m.object_id },
@@ -11845,17 +11848,17 @@ impl ::protobuf::Message for ListEntitiesLockResponse {
 
     fn default_instance() -> &'static ListEntitiesLockResponse {
         static instance: ListEntitiesLockResponse = ListEntitiesLockResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            icon: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            icon: String::new(),
             disabled_by_default: false,
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             assumed_state: false,
             supports_open: false,
             requires_code: false,
-            code_format: ::std::string::String::new(),
+            code_format: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -11869,8 +11872,8 @@ impl ::protobuf::MessageFull for ListEntitiesLockResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesLockResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesLockResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -11892,7 +11895,7 @@ pub struct LockStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a LockStateResponse {
+impl<'a> Default for &'a LockStateResponse {
     fn default() -> &'a LockStateResponse {
         <LockStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -11900,12 +11903,12 @@ impl<'a> ::std::default::Default for &'a LockStateResponse {
 
 impl LockStateResponse {
     pub fn new() -> LockStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &LockStateResponse| { &m.key },
@@ -12009,8 +12012,8 @@ impl ::protobuf::MessageFull for LockStateResponse {
     }
 }
 
-impl ::std::fmt::Display for LockStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for LockStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -12031,13 +12034,13 @@ pub struct LockCommandRequest {
     // @@protoc_insertion_point(field:LockCommandRequest.has_code)
     pub has_code: bool,
     // @@protoc_insertion_point(field:LockCommandRequest.code)
-    pub code: ::std::string::String,
+    pub code: String,
     // special fields
     // @@protoc_insertion_point(special_field:LockCommandRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a LockCommandRequest {
+impl<'a> Default for &'a LockCommandRequest {
     fn default() -> &'a LockCommandRequest {
         <LockCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -12045,12 +12048,12 @@ impl<'a> ::std::default::Default for &'a LockCommandRequest {
 
 impl LockCommandRequest {
     pub fn new() -> LockCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(4);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(4);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &LockCommandRequest| { &m.key },
@@ -12172,7 +12175,7 @@ impl ::protobuf::Message for LockCommandRequest {
             key: 0,
             command: ::protobuf::EnumOrUnknown::from_i32(0),
             has_code: false,
-            code: ::std::string::String::new(),
+            code: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -12186,8 +12189,8 @@ impl ::protobuf::MessageFull for LockCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for LockCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for LockCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -12202,27 +12205,27 @@ impl ::protobuf::reflect::ProtobufValue for LockCommandRequest {
 pub struct ListEntitiesButtonResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesButtonResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesButtonResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesButtonResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesButtonResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesButtonResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesButtonResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesButtonResponse.entity_category)
     pub entity_category: ::protobuf::EnumOrUnknown<EntityCategory>,
     // @@protoc_insertion_point(field:ListEntitiesButtonResponse.device_class)
-    pub device_class: ::std::string::String,
+    pub device_class: String,
     // special fields
     // @@protoc_insertion_point(special_field:ListEntitiesButtonResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesButtonResponse {
+impl<'a> Default for &'a ListEntitiesButtonResponse {
     fn default() -> &'a ListEntitiesButtonResponse {
         <ListEntitiesButtonResponse as ::protobuf::Message>::default_instance()
     }
@@ -12230,12 +12233,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesButtonResponse {
 
 impl ListEntitiesButtonResponse {
     pub fn new() -> ListEntitiesButtonResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(8);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(8);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesButtonResponse| { &m.object_id },
@@ -12414,14 +12417,14 @@ impl ::protobuf::Message for ListEntitiesButtonResponse {
 
     fn default_instance() -> &'static ListEntitiesButtonResponse {
         static instance: ListEntitiesButtonResponse = ListEntitiesButtonResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            icon: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            icon: String::new(),
             disabled_by_default: false,
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
-            device_class: ::std::string::String::new(),
+            device_class: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -12435,8 +12438,8 @@ impl ::protobuf::MessageFull for ListEntitiesButtonResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesButtonResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesButtonResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -12456,7 +12459,7 @@ pub struct ButtonCommandRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ButtonCommandRequest {
+impl<'a> Default for &'a ButtonCommandRequest {
     fn default() -> &'a ButtonCommandRequest {
         <ButtonCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -12464,12 +12467,12 @@ impl<'a> ::std::default::Default for &'a ButtonCommandRequest {
 
 impl ButtonCommandRequest {
     pub fn new() -> ButtonCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(1);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(1);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &ButtonCommandRequest| { &m.key },
@@ -12557,8 +12560,8 @@ impl ::protobuf::MessageFull for ButtonCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for ButtonCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ButtonCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -12572,15 +12575,15 @@ impl ::protobuf::reflect::ProtobufValue for ButtonCommandRequest {
 pub struct ListEntitiesMediaPlayerResponse {
     // message fields
     // @@protoc_insertion_point(field:ListEntitiesMediaPlayerResponse.object_id)
-    pub object_id: ::std::string::String,
+    pub object_id: String,
     // @@protoc_insertion_point(field:ListEntitiesMediaPlayerResponse.key)
     pub key: u32,
     // @@protoc_insertion_point(field:ListEntitiesMediaPlayerResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:ListEntitiesMediaPlayerResponse.unique_id)
-    pub unique_id: ::std::string::String,
+    pub unique_id: String,
     // @@protoc_insertion_point(field:ListEntitiesMediaPlayerResponse.icon)
-    pub icon: ::std::string::String,
+    pub icon: String,
     // @@protoc_insertion_point(field:ListEntitiesMediaPlayerResponse.disabled_by_default)
     pub disabled_by_default: bool,
     // @@protoc_insertion_point(field:ListEntitiesMediaPlayerResponse.entity_category)
@@ -12592,7 +12595,7 @@ pub struct ListEntitiesMediaPlayerResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a ListEntitiesMediaPlayerResponse {
+impl<'a> Default for &'a ListEntitiesMediaPlayerResponse {
     fn default() -> &'a ListEntitiesMediaPlayerResponse {
         <ListEntitiesMediaPlayerResponse as ::protobuf::Message>::default_instance()
     }
@@ -12600,12 +12603,12 @@ impl<'a> ::std::default::Default for &'a ListEntitiesMediaPlayerResponse {
 
 impl ListEntitiesMediaPlayerResponse {
     pub fn new() -> ListEntitiesMediaPlayerResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(8);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(8);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "object_id",
             |m: &ListEntitiesMediaPlayerResponse| { &m.object_id },
@@ -12784,11 +12787,11 @@ impl ::protobuf::Message for ListEntitiesMediaPlayerResponse {
 
     fn default_instance() -> &'static ListEntitiesMediaPlayerResponse {
         static instance: ListEntitiesMediaPlayerResponse = ListEntitiesMediaPlayerResponse {
-            object_id: ::std::string::String::new(),
+            object_id: String::new(),
             key: 0,
-            name: ::std::string::String::new(),
-            unique_id: ::std::string::String::new(),
-            icon: ::std::string::String::new(),
+            name: String::new(),
+            unique_id: String::new(),
+            icon: String::new(),
             disabled_by_default: false,
             entity_category: ::protobuf::EnumOrUnknown::from_i32(0),
             supports_pause: false,
@@ -12805,8 +12808,8 @@ impl ::protobuf::MessageFull for ListEntitiesMediaPlayerResponse {
     }
 }
 
-impl ::std::fmt::Display for ListEntitiesMediaPlayerResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for ListEntitiesMediaPlayerResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -12832,7 +12835,7 @@ pub struct MediaPlayerStateResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a MediaPlayerStateResponse {
+impl<'a> Default for &'a MediaPlayerStateResponse {
     fn default() -> &'a MediaPlayerStateResponse {
         <MediaPlayerStateResponse as ::protobuf::Message>::default_instance()
     }
@@ -12840,12 +12843,12 @@ impl<'a> ::std::default::Default for &'a MediaPlayerStateResponse {
 
 impl MediaPlayerStateResponse {
     pub fn new() -> MediaPlayerStateResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(4);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(4);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &MediaPlayerStateResponse| { &m.key },
@@ -12981,8 +12984,8 @@ impl ::protobuf::MessageFull for MediaPlayerStateResponse {
     }
 }
 
-impl ::std::fmt::Display for MediaPlayerStateResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for MediaPlayerStateResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -13008,13 +13011,13 @@ pub struct MediaPlayerCommandRequest {
     // @@protoc_insertion_point(field:MediaPlayerCommandRequest.has_media_url)
     pub has_media_url: bool,
     // @@protoc_insertion_point(field:MediaPlayerCommandRequest.media_url)
-    pub media_url: ::std::string::String,
+    pub media_url: String,
     // special fields
     // @@protoc_insertion_point(special_field:MediaPlayerCommandRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a MediaPlayerCommandRequest {
+impl<'a> Default for &'a MediaPlayerCommandRequest {
     fn default() -> &'a MediaPlayerCommandRequest {
         <MediaPlayerCommandRequest as ::protobuf::Message>::default_instance()
     }
@@ -13022,12 +13025,12 @@ impl<'a> ::std::default::Default for &'a MediaPlayerCommandRequest {
 
 impl MediaPlayerCommandRequest {
     pub fn new() -> MediaPlayerCommandRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(7);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(7);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "key",
             |m: &MediaPlayerCommandRequest| { &m.key },
@@ -13197,7 +13200,7 @@ impl ::protobuf::Message for MediaPlayerCommandRequest {
             has_volume: false,
             volume: 0.,
             has_media_url: false,
-            media_url: ::std::string::String::new(),
+            media_url: String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -13211,8 +13214,8 @@ impl ::protobuf::MessageFull for MediaPlayerCommandRequest {
     }
 }
 
-impl ::std::fmt::Display for MediaPlayerCommandRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for MediaPlayerCommandRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -13230,7 +13233,7 @@ pub struct SubscribeBluetoothLEAdvertisementsRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SubscribeBluetoothLEAdvertisementsRequest {
+impl<'a> Default for &'a SubscribeBluetoothLEAdvertisementsRequest {
     fn default() -> &'a SubscribeBluetoothLEAdvertisementsRequest {
         <SubscribeBluetoothLEAdvertisementsRequest as ::protobuf::Message>::default_instance()
     }
@@ -13238,12 +13241,12 @@ impl<'a> ::std::default::Default for &'a SubscribeBluetoothLEAdvertisementsReque
 
 impl SubscribeBluetoothLEAdvertisementsRequest {
     pub fn new() -> SubscribeBluetoothLEAdvertisementsRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<SubscribeBluetoothLEAdvertisementsRequest>(
             "SubscribeBluetoothLEAdvertisementsRequest",
             fields,
@@ -13315,8 +13318,8 @@ impl ::protobuf::MessageFull for SubscribeBluetoothLEAdvertisementsRequest {
     }
 }
 
-impl ::std::fmt::Display for SubscribeBluetoothLEAdvertisementsRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SubscribeBluetoothLEAdvertisementsRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -13330,17 +13333,17 @@ impl ::protobuf::reflect::ProtobufValue for SubscribeBluetoothLEAdvertisementsRe
 pub struct BluetoothServiceData {
     // message fields
     // @@protoc_insertion_point(field:BluetoothServiceData.uuid)
-    pub uuid: ::std::string::String,
+    pub uuid: String,
     // @@protoc_insertion_point(field:BluetoothServiceData.legacy_data)
-    pub legacy_data: ::std::vec::Vec<u32>,
+    pub legacy_data: Vec<u32>,
     // @@protoc_insertion_point(field:BluetoothServiceData.data)
-    pub data: ::std::vec::Vec<u8>,
+    pub data: Vec<u8>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothServiceData.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothServiceData {
+impl<'a> Default for &'a BluetoothServiceData {
     fn default() -> &'a BluetoothServiceData {
         <BluetoothServiceData as ::protobuf::Message>::default_instance()
     }
@@ -13348,12 +13351,12 @@ impl<'a> ::std::default::Default for &'a BluetoothServiceData {
 
 impl BluetoothServiceData {
     pub fn new() -> BluetoothServiceData {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "uuid",
             |m: &BluetoothServiceData| { &m.uuid },
@@ -13460,9 +13463,9 @@ impl ::protobuf::Message for BluetoothServiceData {
 
     fn default_instance() -> &'static BluetoothServiceData {
         static instance: BluetoothServiceData = BluetoothServiceData {
-            uuid: ::std::string::String::new(),
-            legacy_data: ::std::vec::Vec::new(),
-            data: ::std::vec::Vec::new(),
+            uuid: String::new(),
+            legacy_data: Vec::new(),
+            data: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -13476,8 +13479,8 @@ impl ::protobuf::MessageFull for BluetoothServiceData {
     }
 }
 
-impl ::std::fmt::Display for BluetoothServiceData {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothServiceData {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -13493,21 +13496,21 @@ pub struct BluetoothLEAdvertisementResponse {
     // @@protoc_insertion_point(field:BluetoothLEAdvertisementResponse.address)
     pub address: u64,
     // @@protoc_insertion_point(field:BluetoothLEAdvertisementResponse.name)
-    pub name: ::std::string::String,
+    pub name: String,
     // @@protoc_insertion_point(field:BluetoothLEAdvertisementResponse.rssi)
     pub rssi: i32,
     // @@protoc_insertion_point(field:BluetoothLEAdvertisementResponse.service_uuids)
-    pub service_uuids: ::std::vec::Vec<::std::string::String>,
+    pub service_uuids: Vec<String>,
     // @@protoc_insertion_point(field:BluetoothLEAdvertisementResponse.service_data)
-    pub service_data: ::std::vec::Vec<BluetoothServiceData>,
+    pub service_data: Vec<BluetoothServiceData>,
     // @@protoc_insertion_point(field:BluetoothLEAdvertisementResponse.manufacturer_data)
-    pub manufacturer_data: ::std::vec::Vec<BluetoothServiceData>,
+    pub manufacturer_data: Vec<BluetoothServiceData>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothLEAdvertisementResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothLEAdvertisementResponse {
+impl<'a> Default for &'a BluetoothLEAdvertisementResponse {
     fn default() -> &'a BluetoothLEAdvertisementResponse {
         <BluetoothLEAdvertisementResponse as ::protobuf::Message>::default_instance()
     }
@@ -13515,12 +13518,12 @@ impl<'a> ::std::default::Default for &'a BluetoothLEAdvertisementResponse {
 
 impl BluetoothLEAdvertisementResponse {
     pub fn new() -> BluetoothLEAdvertisementResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(6);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(6);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothLEAdvertisementResponse| { &m.address },
@@ -13672,11 +13675,11 @@ impl ::protobuf::Message for BluetoothLEAdvertisementResponse {
     fn default_instance() -> &'static BluetoothLEAdvertisementResponse {
         static instance: BluetoothLEAdvertisementResponse = BluetoothLEAdvertisementResponse {
             address: 0,
-            name: ::std::string::String::new(),
+            name: String::new(),
             rssi: 0,
-            service_uuids: ::std::vec::Vec::new(),
-            service_data: ::std::vec::Vec::new(),
-            manufacturer_data: ::std::vec::Vec::new(),
+            service_uuids: Vec::new(),
+            service_data: Vec::new(),
+            manufacturer_data: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -13690,8 +13693,8 @@ impl ::protobuf::MessageFull for BluetoothLEAdvertisementResponse {
     }
 }
 
-impl ::std::fmt::Display for BluetoothLEAdvertisementResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothLEAdvertisementResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -13713,7 +13716,7 @@ pub struct BluetoothDeviceRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothDeviceRequest {
+impl<'a> Default for &'a BluetoothDeviceRequest {
     fn default() -> &'a BluetoothDeviceRequest {
         <BluetoothDeviceRequest as ::protobuf::Message>::default_instance()
     }
@@ -13721,12 +13724,12 @@ impl<'a> ::std::default::Default for &'a BluetoothDeviceRequest {
 
 impl BluetoothDeviceRequest {
     pub fn new() -> BluetoothDeviceRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothDeviceRequest| { &m.address },
@@ -13830,8 +13833,8 @@ impl ::protobuf::MessageFull for BluetoothDeviceRequest {
     }
 }
 
-impl ::std::fmt::Display for BluetoothDeviceRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothDeviceRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -13857,7 +13860,7 @@ pub struct BluetoothDeviceConnectionResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothDeviceConnectionResponse {
+impl<'a> Default for &'a BluetoothDeviceConnectionResponse {
     fn default() -> &'a BluetoothDeviceConnectionResponse {
         <BluetoothDeviceConnectionResponse as ::protobuf::Message>::default_instance()
     }
@@ -13865,12 +13868,12 @@ impl<'a> ::std::default::Default for &'a BluetoothDeviceConnectionResponse {
 
 impl BluetoothDeviceConnectionResponse {
     pub fn new() -> BluetoothDeviceConnectionResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(4);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(4);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothDeviceConnectionResponse| { &m.address },
@@ -14006,8 +14009,8 @@ impl ::protobuf::MessageFull for BluetoothDeviceConnectionResponse {
     }
 }
 
-impl ::std::fmt::Display for BluetoothDeviceConnectionResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothDeviceConnectionResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -14027,7 +14030,7 @@ pub struct BluetoothGATTGetServicesRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTGetServicesRequest {
+impl<'a> Default for &'a BluetoothGATTGetServicesRequest {
     fn default() -> &'a BluetoothGATTGetServicesRequest {
         <BluetoothGATTGetServicesRequest as ::protobuf::Message>::default_instance()
     }
@@ -14035,12 +14038,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTGetServicesRequest {
 
 impl BluetoothGATTGetServicesRequest {
     pub fn new() -> BluetoothGATTGetServicesRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(1);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(1);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTGetServicesRequest| { &m.address },
@@ -14128,8 +14131,8 @@ impl ::protobuf::MessageFull for BluetoothGATTGetServicesRequest {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTGetServicesRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTGetServicesRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -14143,7 +14146,7 @@ impl ::protobuf::reflect::ProtobufValue for BluetoothGATTGetServicesRequest {
 pub struct BluetoothGATTDescriptor {
     // message fields
     // @@protoc_insertion_point(field:BluetoothGATTDescriptor.uuid)
-    pub uuid: ::std::vec::Vec<u64>,
+    pub uuid: Vec<u64>,
     // @@protoc_insertion_point(field:BluetoothGATTDescriptor.handle)
     pub handle: u32,
     // special fields
@@ -14151,7 +14154,7 @@ pub struct BluetoothGATTDescriptor {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTDescriptor {
+impl<'a> Default for &'a BluetoothGATTDescriptor {
     fn default() -> &'a BluetoothGATTDescriptor {
         <BluetoothGATTDescriptor as ::protobuf::Message>::default_instance()
     }
@@ -14159,12 +14162,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTDescriptor {
 
 impl BluetoothGATTDescriptor {
     pub fn new() -> BluetoothGATTDescriptor {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
             "uuid",
             |m: &BluetoothGATTDescriptor| { &m.uuid },
@@ -14256,7 +14259,7 @@ impl ::protobuf::Message for BluetoothGATTDescriptor {
 
     fn default_instance() -> &'static BluetoothGATTDescriptor {
         static instance: BluetoothGATTDescriptor = BluetoothGATTDescriptor {
-            uuid: ::std::vec::Vec::new(),
+            uuid: Vec::new(),
             handle: 0,
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -14271,8 +14274,8 @@ impl ::protobuf::MessageFull for BluetoothGATTDescriptor {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTDescriptor {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTDescriptor {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -14286,19 +14289,19 @@ impl ::protobuf::reflect::ProtobufValue for BluetoothGATTDescriptor {
 pub struct BluetoothGATTCharacteristic {
     // message fields
     // @@protoc_insertion_point(field:BluetoothGATTCharacteristic.uuid)
-    pub uuid: ::std::vec::Vec<u64>,
+    pub uuid: Vec<u64>,
     // @@protoc_insertion_point(field:BluetoothGATTCharacteristic.handle)
     pub handle: u32,
     // @@protoc_insertion_point(field:BluetoothGATTCharacteristic.properties)
     pub properties: u32,
     // @@protoc_insertion_point(field:BluetoothGATTCharacteristic.descriptors)
-    pub descriptors: ::std::vec::Vec<BluetoothGATTDescriptor>,
+    pub descriptors: Vec<BluetoothGATTDescriptor>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothGATTCharacteristic.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTCharacteristic {
+impl<'a> Default for &'a BluetoothGATTCharacteristic {
     fn default() -> &'a BluetoothGATTCharacteristic {
         <BluetoothGATTCharacteristic as ::protobuf::Message>::default_instance()
     }
@@ -14306,12 +14309,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTCharacteristic {
 
 impl BluetoothGATTCharacteristic {
     pub fn new() -> BluetoothGATTCharacteristic {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(4);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(4);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
             "uuid",
             |m: &BluetoothGATTCharacteristic| { &m.uuid },
@@ -14434,10 +14437,10 @@ impl ::protobuf::Message for BluetoothGATTCharacteristic {
 
     fn default_instance() -> &'static BluetoothGATTCharacteristic {
         static instance: BluetoothGATTCharacteristic = BluetoothGATTCharacteristic {
-            uuid: ::std::vec::Vec::new(),
+            uuid: Vec::new(),
             handle: 0,
             properties: 0,
-            descriptors: ::std::vec::Vec::new(),
+            descriptors: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -14451,8 +14454,8 @@ impl ::protobuf::MessageFull for BluetoothGATTCharacteristic {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTCharacteristic {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTCharacteristic {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -14466,17 +14469,17 @@ impl ::protobuf::reflect::ProtobufValue for BluetoothGATTCharacteristic {
 pub struct BluetoothGATTService {
     // message fields
     // @@protoc_insertion_point(field:BluetoothGATTService.uuid)
-    pub uuid: ::std::vec::Vec<u64>,
+    pub uuid: Vec<u64>,
     // @@protoc_insertion_point(field:BluetoothGATTService.handle)
     pub handle: u32,
     // @@protoc_insertion_point(field:BluetoothGATTService.characteristics)
-    pub characteristics: ::std::vec::Vec<BluetoothGATTCharacteristic>,
+    pub characteristics: Vec<BluetoothGATTCharacteristic>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothGATTService.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTService {
+impl<'a> Default for &'a BluetoothGATTService {
     fn default() -> &'a BluetoothGATTService {
         <BluetoothGATTService as ::protobuf::Message>::default_instance()
     }
@@ -14484,12 +14487,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTService {
 
 impl BluetoothGATTService {
     pub fn new() -> BluetoothGATTService {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
             "uuid",
             |m: &BluetoothGATTService| { &m.uuid },
@@ -14597,9 +14600,9 @@ impl ::protobuf::Message for BluetoothGATTService {
 
     fn default_instance() -> &'static BluetoothGATTService {
         static instance: BluetoothGATTService = BluetoothGATTService {
-            uuid: ::std::vec::Vec::new(),
+            uuid: Vec::new(),
             handle: 0,
-            characteristics: ::std::vec::Vec::new(),
+            characteristics: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -14613,8 +14616,8 @@ impl ::protobuf::MessageFull for BluetoothGATTService {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTService {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTService {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -14630,13 +14633,13 @@ pub struct BluetoothGATTGetServicesResponse {
     // @@protoc_insertion_point(field:BluetoothGATTGetServicesResponse.address)
     pub address: u64,
     // @@protoc_insertion_point(field:BluetoothGATTGetServicesResponse.services)
-    pub services: ::std::vec::Vec<BluetoothGATTService>,
+    pub services: Vec<BluetoothGATTService>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothGATTGetServicesResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTGetServicesResponse {
+impl<'a> Default for &'a BluetoothGATTGetServicesResponse {
     fn default() -> &'a BluetoothGATTGetServicesResponse {
         <BluetoothGATTGetServicesResponse as ::protobuf::Message>::default_instance()
     }
@@ -14644,12 +14647,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTGetServicesResponse {
 
 impl BluetoothGATTGetServicesResponse {
     pub fn new() -> BluetoothGATTGetServicesResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTGetServicesResponse| { &m.address },
@@ -14740,7 +14743,7 @@ impl ::protobuf::Message for BluetoothGATTGetServicesResponse {
     fn default_instance() -> &'static BluetoothGATTGetServicesResponse {
         static instance: BluetoothGATTGetServicesResponse = BluetoothGATTGetServicesResponse {
             address: 0,
-            services: ::std::vec::Vec::new(),
+            services: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -14754,8 +14757,8 @@ impl ::protobuf::MessageFull for BluetoothGATTGetServicesResponse {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTGetServicesResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTGetServicesResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -14775,7 +14778,7 @@ pub struct BluetoothGATTGetServicesDoneResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTGetServicesDoneResponse {
+impl<'a> Default for &'a BluetoothGATTGetServicesDoneResponse {
     fn default() -> &'a BluetoothGATTGetServicesDoneResponse {
         <BluetoothGATTGetServicesDoneResponse as ::protobuf::Message>::default_instance()
     }
@@ -14783,12 +14786,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTGetServicesDoneResponse {
 
 impl BluetoothGATTGetServicesDoneResponse {
     pub fn new() -> BluetoothGATTGetServicesDoneResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(1);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(1);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTGetServicesDoneResponse| { &m.address },
@@ -14876,8 +14879,8 @@ impl ::protobuf::MessageFull for BluetoothGATTGetServicesDoneResponse {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTGetServicesDoneResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTGetServicesDoneResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -14899,7 +14902,7 @@ pub struct BluetoothGATTReadRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTReadRequest {
+impl<'a> Default for &'a BluetoothGATTReadRequest {
     fn default() -> &'a BluetoothGATTReadRequest {
         <BluetoothGATTReadRequest as ::protobuf::Message>::default_instance()
     }
@@ -14907,12 +14910,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTReadRequest {
 
 impl BluetoothGATTReadRequest {
     pub fn new() -> BluetoothGATTReadRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTReadRequest| { &m.address },
@@ -15016,8 +15019,8 @@ impl ::protobuf::MessageFull for BluetoothGATTReadRequest {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTReadRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTReadRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -15035,13 +15038,13 @@ pub struct BluetoothGATTReadResponse {
     // @@protoc_insertion_point(field:BluetoothGATTReadResponse.handle)
     pub handle: u32,
     // @@protoc_insertion_point(field:BluetoothGATTReadResponse.data)
-    pub data: ::std::vec::Vec<u8>,
+    pub data: Vec<u8>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothGATTReadResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTReadResponse {
+impl<'a> Default for &'a BluetoothGATTReadResponse {
     fn default() -> &'a BluetoothGATTReadResponse {
         <BluetoothGATTReadResponse as ::protobuf::Message>::default_instance()
     }
@@ -15049,12 +15052,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTReadResponse {
 
 impl BluetoothGATTReadResponse {
     pub fn new() -> BluetoothGATTReadResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTReadResponse| { &m.address },
@@ -15160,7 +15163,7 @@ impl ::protobuf::Message for BluetoothGATTReadResponse {
         static instance: BluetoothGATTReadResponse = BluetoothGATTReadResponse {
             address: 0,
             handle: 0,
-            data: ::std::vec::Vec::new(),
+            data: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -15174,8 +15177,8 @@ impl ::protobuf::MessageFull for BluetoothGATTReadResponse {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTReadResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTReadResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -15195,13 +15198,13 @@ pub struct BluetoothGATTWriteRequest {
     // @@protoc_insertion_point(field:BluetoothGATTWriteRequest.response)
     pub response: bool,
     // @@protoc_insertion_point(field:BluetoothGATTWriteRequest.data)
-    pub data: ::std::vec::Vec<u8>,
+    pub data: Vec<u8>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothGATTWriteRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTWriteRequest {
+impl<'a> Default for &'a BluetoothGATTWriteRequest {
     fn default() -> &'a BluetoothGATTWriteRequest {
         <BluetoothGATTWriteRequest as ::protobuf::Message>::default_instance()
     }
@@ -15209,12 +15212,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTWriteRequest {
 
 impl BluetoothGATTWriteRequest {
     pub fn new() -> BluetoothGATTWriteRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(4);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(4);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTWriteRequest| { &m.address },
@@ -15336,7 +15339,7 @@ impl ::protobuf::Message for BluetoothGATTWriteRequest {
             address: 0,
             handle: 0,
             response: false,
-            data: ::std::vec::Vec::new(),
+            data: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -15350,8 +15353,8 @@ impl ::protobuf::MessageFull for BluetoothGATTWriteRequest {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTWriteRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTWriteRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -15373,7 +15376,7 @@ pub struct BluetoothGATTReadDescriptorRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTReadDescriptorRequest {
+impl<'a> Default for &'a BluetoothGATTReadDescriptorRequest {
     fn default() -> &'a BluetoothGATTReadDescriptorRequest {
         <BluetoothGATTReadDescriptorRequest as ::protobuf::Message>::default_instance()
     }
@@ -15381,12 +15384,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTReadDescriptorRequest {
 
 impl BluetoothGATTReadDescriptorRequest {
     pub fn new() -> BluetoothGATTReadDescriptorRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTReadDescriptorRequest| { &m.address },
@@ -15490,8 +15493,8 @@ impl ::protobuf::MessageFull for BluetoothGATTReadDescriptorRequest {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTReadDescriptorRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTReadDescriptorRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -15509,13 +15512,13 @@ pub struct BluetoothGATTWriteDescriptorRequest {
     // @@protoc_insertion_point(field:BluetoothGATTWriteDescriptorRequest.handle)
     pub handle: u32,
     // @@protoc_insertion_point(field:BluetoothGATTWriteDescriptorRequest.data)
-    pub data: ::std::vec::Vec<u8>,
+    pub data: Vec<u8>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothGATTWriteDescriptorRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTWriteDescriptorRequest {
+impl<'a> Default for &'a BluetoothGATTWriteDescriptorRequest {
     fn default() -> &'a BluetoothGATTWriteDescriptorRequest {
         <BluetoothGATTWriteDescriptorRequest as ::protobuf::Message>::default_instance()
     }
@@ -15523,12 +15526,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTWriteDescriptorRequest {
 
 impl BluetoothGATTWriteDescriptorRequest {
     pub fn new() -> BluetoothGATTWriteDescriptorRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTWriteDescriptorRequest| { &m.address },
@@ -15634,7 +15637,7 @@ impl ::protobuf::Message for BluetoothGATTWriteDescriptorRequest {
         static instance: BluetoothGATTWriteDescriptorRequest = BluetoothGATTWriteDescriptorRequest {
             address: 0,
             handle: 0,
-            data: ::std::vec::Vec::new(),
+            data: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -15648,8 +15651,8 @@ impl ::protobuf::MessageFull for BluetoothGATTWriteDescriptorRequest {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTWriteDescriptorRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTWriteDescriptorRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -15673,7 +15676,7 @@ pub struct BluetoothGATTNotifyRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTNotifyRequest {
+impl<'a> Default for &'a BluetoothGATTNotifyRequest {
     fn default() -> &'a BluetoothGATTNotifyRequest {
         <BluetoothGATTNotifyRequest as ::protobuf::Message>::default_instance()
     }
@@ -15681,12 +15684,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTNotifyRequest {
 
 impl BluetoothGATTNotifyRequest {
     pub fn new() -> BluetoothGATTNotifyRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTNotifyRequest| { &m.address },
@@ -15806,8 +15809,8 @@ impl ::protobuf::MessageFull for BluetoothGATTNotifyRequest {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTNotifyRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTNotifyRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -15825,13 +15828,13 @@ pub struct BluetoothGATTNotifyDataResponse {
     // @@protoc_insertion_point(field:BluetoothGATTNotifyDataResponse.handle)
     pub handle: u32,
     // @@protoc_insertion_point(field:BluetoothGATTNotifyDataResponse.data)
-    pub data: ::std::vec::Vec<u8>,
+    pub data: Vec<u8>,
     // special fields
     // @@protoc_insertion_point(special_field:BluetoothGATTNotifyDataResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothGATTNotifyDataResponse {
+impl<'a> Default for &'a BluetoothGATTNotifyDataResponse {
     fn default() -> &'a BluetoothGATTNotifyDataResponse {
         <BluetoothGATTNotifyDataResponse as ::protobuf::Message>::default_instance()
     }
@@ -15839,12 +15842,12 @@ impl<'a> ::std::default::Default for &'a BluetoothGATTNotifyDataResponse {
 
 impl BluetoothGATTNotifyDataResponse {
     pub fn new() -> BluetoothGATTNotifyDataResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(3);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(3);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "address",
             |m: &BluetoothGATTNotifyDataResponse| { &m.address },
@@ -15950,7 +15953,7 @@ impl ::protobuf::Message for BluetoothGATTNotifyDataResponse {
         static instance: BluetoothGATTNotifyDataResponse = BluetoothGATTNotifyDataResponse {
             address: 0,
             handle: 0,
-            data: ::std::vec::Vec::new(),
+            data: Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -15964,8 +15967,8 @@ impl ::protobuf::MessageFull for BluetoothGATTNotifyDataResponse {
     }
 }
 
-impl ::std::fmt::Display for BluetoothGATTNotifyDataResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothGATTNotifyDataResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -15982,7 +15985,7 @@ pub struct SubscribeBluetoothConnectionsFreeRequest {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a SubscribeBluetoothConnectionsFreeRequest {
+impl<'a> Default for &'a SubscribeBluetoothConnectionsFreeRequest {
     fn default() -> &'a SubscribeBluetoothConnectionsFreeRequest {
         <SubscribeBluetoothConnectionsFreeRequest as ::protobuf::Message>::default_instance()
     }
@@ -15990,12 +15993,12 @@ impl<'a> ::std::default::Default for &'a SubscribeBluetoothConnectionsFreeReques
 
 impl SubscribeBluetoothConnectionsFreeRequest {
     pub fn new() -> SubscribeBluetoothConnectionsFreeRequest {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(0);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::new();
+        let mut oneofs = Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<SubscribeBluetoothConnectionsFreeRequest>(
             "SubscribeBluetoothConnectionsFreeRequest",
             fields,
@@ -16067,8 +16070,8 @@ impl ::protobuf::MessageFull for SubscribeBluetoothConnectionsFreeRequest {
     }
 }
 
-impl ::std::fmt::Display for SubscribeBluetoothConnectionsFreeRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for SubscribeBluetoothConnectionsFreeRequest {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -16090,7 +16093,7 @@ pub struct BluetoothConnectionsFreeResponse {
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a BluetoothConnectionsFreeResponse {
+impl<'a> Default for &'a BluetoothConnectionsFreeResponse {
     fn default() -> &'a BluetoothConnectionsFreeResponse {
         <BluetoothConnectionsFreeResponse as ::protobuf::Message>::default_instance()
     }
@@ -16098,12 +16101,12 @@ impl<'a> ::std::default::Default for &'a BluetoothConnectionsFreeResponse {
 
 impl BluetoothConnectionsFreeResponse {
     pub fn new() -> BluetoothConnectionsFreeResponse {
-        ::std::default::Default::default()
+        Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
-        let mut oneofs = ::std::vec::Vec::with_capacity(0);
+        let mut fields = Vec::with_capacity(2);
+        let mut oneofs = Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "free",
             |m: &BluetoothConnectionsFreeResponse| { &m.free },
@@ -16147,7 +16150,7 @@ impl ::protobuf::Message for BluetoothConnectionsFreeResponse {
     }
 
     // Compute sizes of nested messages
-    #[allow(unused_variables)]
+
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
         if self.free != 0 {
@@ -16207,8 +16210,8 @@ impl ::protobuf::MessageFull for BluetoothConnectionsFreeResponse {
     }
 }
 
-impl ::std::fmt::Display for BluetoothConnectionsFreeResponse {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+impl Display for BluetoothConnectionsFreeResponse {
+    fn fmt(&self, f: &mut Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
@@ -16263,7 +16266,7 @@ impl ::protobuf::EnumFull for EntityCategory {
     }
 }
 
-impl ::std::default::Default for EntityCategory {
+impl Default for EntityCategory {
     fn default() -> Self {
         EntityCategory::ENTITY_CATEGORY_NONE
     }
@@ -16317,7 +16320,7 @@ impl ::protobuf::EnumFull for LegacyCoverState {
     }
 }
 
-impl ::std::default::Default for LegacyCoverState {
+impl Default for LegacyCoverState {
     fn default() -> Self {
         LegacyCoverState::LEGACY_COVER_STATE_OPEN
     }
@@ -16375,7 +16378,7 @@ impl ::protobuf::EnumFull for CoverOperation {
     }
 }
 
-impl ::std::default::Default for CoverOperation {
+impl Default for CoverOperation {
     fn default() -> Self {
         CoverOperation::COVER_OPERATION_IDLE
     }
@@ -16433,7 +16436,7 @@ impl ::protobuf::EnumFull for LegacyCoverCommand {
     }
 }
 
-impl ::std::default::Default for LegacyCoverCommand {
+impl Default for LegacyCoverCommand {
     fn default() -> Self {
         LegacyCoverCommand::LEGACY_COVER_COMMAND_OPEN
     }
@@ -16491,7 +16494,7 @@ impl ::protobuf::EnumFull for FanSpeed {
     }
 }
 
-impl ::std::default::Default for FanSpeed {
+impl Default for FanSpeed {
     fn default() -> Self {
         FanSpeed::FAN_SPEED_LOW
     }
@@ -16545,7 +16548,7 @@ impl ::protobuf::EnumFull for FanDirection {
     }
 }
 
-impl ::std::default::Default for FanDirection {
+impl Default for FanDirection {
     fn default() -> Self {
         FanDirection::FAN_DIRECTION_FORWARD
     }
@@ -16643,7 +16646,7 @@ impl ::protobuf::EnumFull for ColorMode {
     }
 }
 
-impl ::std::default::Default for ColorMode {
+impl Default for ColorMode {
     fn default() -> Self {
         ColorMode::COLOR_MODE_UNKNOWN
     }
@@ -16706,7 +16709,7 @@ impl ::protobuf::EnumFull for SensorStateClass {
     }
 }
 
-impl ::std::default::Default for SensorStateClass {
+impl Default for SensorStateClass {
     fn default() -> Self {
         SensorStateClass::STATE_CLASS_NONE
     }
@@ -16764,7 +16767,7 @@ impl ::protobuf::EnumFull for SensorLastResetType {
     }
 }
 
-impl ::std::default::Default for SensorLastResetType {
+impl Default for SensorLastResetType {
     fn default() -> Self {
         SensorLastResetType::LAST_RESET_NONE
     }
@@ -16843,7 +16846,7 @@ impl ::protobuf::EnumFull for LogLevel {
     }
 }
 
-impl ::std::default::Default for LogLevel {
+impl Default for LogLevel {
     fn default() -> Self {
         LogLevel::LOG_LEVEL_NONE
     }
@@ -16922,7 +16925,7 @@ impl ::protobuf::EnumFull for ServiceArgType {
     }
 }
 
-impl ::std::default::Default for ServiceArgType {
+impl Default for ServiceArgType {
     fn default() -> Self {
         ServiceArgType::SERVICE_ARG_TYPE_BOOL
     }
@@ -16997,7 +17000,7 @@ impl ::protobuf::EnumFull for ClimateMode {
     }
 }
 
-impl ::std::default::Default for ClimateMode {
+impl Default for ClimateMode {
     fn default() -> Self {
         ClimateMode::CLIMATE_MODE_OFF
     }
@@ -17079,7 +17082,7 @@ impl ::protobuf::EnumFull for ClimateFanMode {
     }
 }
 
-impl ::std::default::Default for ClimateFanMode {
+impl Default for ClimateFanMode {
     fn default() -> Self {
         ClimateFanMode::CLIMATE_FAN_ON
     }
@@ -17141,7 +17144,7 @@ impl ::protobuf::EnumFull for ClimateSwingMode {
     }
 }
 
-impl ::std::default::Default for ClimateSwingMode {
+impl Default for ClimateSwingMode {
     fn default() -> Self {
         ClimateSwingMode::CLIMATE_SWING_OFF
     }
@@ -17218,7 +17221,7 @@ impl ::protobuf::EnumFull for ClimateAction {
     }
 }
 
-impl ::std::default::Default for ClimateAction {
+impl Default for ClimateAction {
     fn default() -> Self {
         ClimateAction::CLIMATE_ACTION_OFF
     }
@@ -17296,7 +17299,7 @@ impl ::protobuf::EnumFull for ClimatePreset {
     }
 }
 
-impl ::std::default::Default for ClimatePreset {
+impl Default for ClimatePreset {
     fn default() -> Self {
         ClimatePreset::CLIMATE_PRESET_NONE
     }
@@ -17355,7 +17358,7 @@ impl ::protobuf::EnumFull for NumberMode {
     }
 }
 
-impl ::std::default::Default for NumberMode {
+impl Default for NumberMode {
     fn default() -> Self {
         NumberMode::NUMBER_MODE_AUTO
     }
@@ -17426,7 +17429,7 @@ impl ::protobuf::EnumFull for LockState {
     }
 }
 
-impl ::std::default::Default for LockState {
+impl Default for LockState {
     fn default() -> Self {
         LockState::LOCK_STATE_NONE
     }
@@ -17484,7 +17487,7 @@ impl ::protobuf::EnumFull for LockCommand {
     }
 }
 
-impl ::std::default::Default for LockCommand {
+impl Default for LockCommand {
     fn default() -> Self {
         LockCommand::LOCK_UNLOCK
     }
@@ -17547,7 +17550,7 @@ impl ::protobuf::EnumFull for MediaPlayerState {
     }
 }
 
-impl ::std::default::Default for MediaPlayerState {
+impl Default for MediaPlayerState {
     fn default() -> Self {
         MediaPlayerState::MEDIA_PLAYER_STATE_NONE
     }
@@ -17613,7 +17616,7 @@ impl ::protobuf::EnumFull for MediaPlayerCommand {
     }
 }
 
-impl ::std::default::Default for MediaPlayerCommand {
+impl Default for MediaPlayerCommand {
     fn default() -> Self {
         MediaPlayerCommand::MEDIA_PLAYER_COMMAND_PLAY
     }
@@ -17675,7 +17678,7 @@ impl ::protobuf::EnumFull for BluetoothDeviceRequestType {
     }
 }
 
-impl ::std::default::Default for BluetoothDeviceRequestType {
+impl Default for BluetoothDeviceRequestType {
     fn default() -> Self {
         BluetoothDeviceRequestType::BLUETOOTH_DEVICE_REQUEST_TYPE_CONNECT
     }
@@ -20337,9 +20340,9 @@ pub fn file_descriptor() -> &'static ::protobuf::reflect::FileDescriptor {
     static file_descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::FileDescriptor> = ::protobuf::rt::Lazy::new();
     file_descriptor.get(|| {
         let generated_file_descriptor = generated_file_descriptor_lazy.get(|| {
-            let mut deps = ::std::vec::Vec::with_capacity(1);
+            let mut deps = Vec::with_capacity(1);
             deps.push(super::api_options::file_descriptor().clone());
-            let mut messages = ::std::vec::Vec::with_capacity(85);
+            let mut messages = Vec::with_capacity(85);
             messages.push(HelloRequest::generated_message_descriptor_data());
             messages.push(HelloResponse::generated_message_descriptor_data());
             messages.push(ConnectRequest::generated_message_descriptor_data());
@@ -20425,7 +20428,7 @@ pub fn file_descriptor() -> &'static ::protobuf::reflect::FileDescriptor {
             messages.push(BluetoothGATTNotifyDataResponse::generated_message_descriptor_data());
             messages.push(SubscribeBluetoothConnectionsFreeRequest::generated_message_descriptor_data());
             messages.push(BluetoothConnectionsFreeResponse::generated_message_descriptor_data());
-            let mut enums = ::std::vec::Vec::with_capacity(22);
+            let mut enums = Vec::with_capacity(22);
             enums.push(EntityCategory::generated_enum_descriptor_data());
             enums.push(LegacyCoverState::generated_enum_descriptor_data());
             enums.push(CoverOperation::generated_enum_descriptor_data());

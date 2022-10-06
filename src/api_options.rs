@@ -41,7 +41,7 @@ impl<'a> ::std::default::Default for &'a Void {
 
 impl Void {
     pub fn new() -> Void {
-        ::std::default::Default::default()
+        crate::api_options::Void::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
@@ -76,10 +76,9 @@ impl ::protobuf::Message for Void {
     // Compute sizes of nested messages
     #[allow(unused_variables)]
     fn compute_size(&self) -> u64 {
-        let mut my_size = 0;
-        my_size += ::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
-        self.special_fields.cached_size().set(my_size as u32);
-        my_size
+        let my_size = u32::try_from(protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields())).expect("u64 to large for u32!");
+        self.special_fields.cached_size().set(my_size);
+        u64::from(my_size)
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::Result<()> {

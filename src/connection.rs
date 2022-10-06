@@ -56,7 +56,7 @@ impl<'a> Connection<'a> {
 	{
 		let message_bytes = message.write_to_bytes()?;
 		self.cos.write_raw_byte(0)?;
-		self.cos.write_raw_varint32(message_bytes.len() as u32)?;
+		self.cos.write_raw_varint32(u32::try_from(message_bytes.len())?)?;
 		self.cos.write_raw_varint32(message_type as u32)?;
 		self.cos.write_raw_bytes(&message_bytes)?;
 		self.cos.flush()?;
@@ -129,7 +129,7 @@ impl<'a> Connection<'a> {
 				self.receive_message_body::<api::GetTimeRequest>(header)?;
 				let mut res = api::GetTimeResponse::new();
 				res.epoch_seconds =
-					(SystemTime::now().duration_since(UNIX_EPOCH)?).as_secs() as u32;
+					u32::try_from(SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs())?;
 				self.send_message(MessageType::GetTimeResponse, &res)?;
 				Ok(true)
 			}
@@ -153,13 +153,15 @@ impl<'a> Connection<'a> {
 			}
 
 			// State updates
-			Some(MessageType::CoverStateResponse)
-			| Some(MessageType::FanStateResponse)
-			| Some(MessageType::LightStateResponse)
-			| Some(MessageType::SwitchStateResponse)
-			| Some(MessageType::ClimateStateResponse)
-			| Some(MessageType::NumberStateResponse)
-			| Some(MessageType::SelectStateResponse) => {
+			Some(
+				MessageType::CoverStateResponse
+				| MessageType::FanStateResponse
+				| MessageType::LightStateResponse
+				| MessageType::SwitchStateResponse
+				| MessageType::ClimateStateResponse
+				| MessageType::NumberStateResponse
+				| MessageType::SelectStateResponse,
+			) => {
 				// Skip these messages
 				println!("Receive state update: {:?}", header.message_type);
 				self.ignore_bytes(header.message_length)?;

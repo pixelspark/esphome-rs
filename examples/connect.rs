@@ -1,4 +1,4 @@
-use esphome::*;
+use esphome::Connection;
 use std::{
 	error::Error,
 	net::TcpStream,
@@ -44,7 +44,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 			std::thread::sleep(Duration::from_secs(1));
 
 			for e in &entities {
-				println!("- {:?}: {:?}", e, ad.device.connection.get_last_state(&e));
+				println!("- {:?}: {:?}", e, ad.device.connection.get_last_state(e));
 			}
 		}
 	}

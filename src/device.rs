@@ -193,7 +193,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Sensor(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesBinarySensorResponse) => {
@@ -202,7 +202,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::BinarySensor(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesCoverResponse) => {
@@ -211,7 +211,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Cover(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesFanResponse) => {
@@ -220,7 +220,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Fan(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesLightResponse) => {
@@ -229,7 +229,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Light(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesSwitchResponse) => {
@@ -238,7 +238,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Switch(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesTextSensorResponse) => {
@@ -247,7 +247,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::TextSensor(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesCameraResponse) => {
@@ -256,7 +256,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Camera(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesClimateResponse) => {
@@ -265,7 +265,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Climate(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesServicesResponse) => {
@@ -274,7 +274,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Services,
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesSelectResponse) => {
@@ -283,7 +283,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Select(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesNumberResponse) => {
@@ -292,7 +292,7 @@ impl<'a> AuthenticatedDevice<'a> {
 					entities.push(Entity::new(
 						EntityInfo::from(sr.clone()),
 						EntityKind::Number(ExtendedInfo::from(sr)),
-					))
+					));
 				}
 
 				Some(MessageType::ListEntitiesDoneResponse) => {
