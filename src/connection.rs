@@ -9,6 +9,7 @@ use std::{
 	collections::HashMap,
 	error::Error,
 	io::{Read, Write},
+	mem::MaybeUninit,
 	time::{SystemTime, UNIX_EPOCH},
 };
 
@@ -55,7 +56,7 @@ impl<'a> Connection<'a> {
 	{
 		let message_bytes = message.write_to_bytes()?;
 		self.cos.write_raw_byte(0)?;
-		self.cos.write_raw_varint32(message_bytes.len() as u32)?;
+		self.cos.write_raw_varint32(u32::try_from(message_bytes.len())?)?;
 		self.cos.write_raw_varint32(message_type as u32)?;
 		self.cos.write_raw_bytes(&message_bytes)?;
 		self.cos.flush()?;
@@ -93,9 +94,14 @@ impl<'a> Connection<'a> {
 	where
 		M: protobuf::Message,
 	{
-		let mut message_bytes = vec![0u8; header.message_length as usize];
-		self.cis.read_exact(&mut message_bytes)?;
-		Ok(M::parse_from_bytes(&message_bytes)?)
+		let mut message_bytes: [MaybeUninit<u8>; 4096] =
+			unsafe { MaybeUninit::uninit().assume_init() };
+		self.cis
+			.read_exact(&mut message_bytes[0..header.message_length as usize])?;
+		let data = unsafe { std::mem::transmute::<_, [u8; 4096]>(message_bytes) };
+		Ok(M::parse_from_bytes(
+			&data[0..header.message_length as usize],
+		)?)
 	}
 
 	fn ignore_bytes(&mut self, bytes: u32) -> Result<(), EspHomeError> {
@@ -106,12 +112,12 @@ impl<'a> Connection<'a> {
 	fn process_unsolicited(&mut self, header: &MessageHeader) -> Result<bool, EspHomeError> {
 		match FromPrimitive::from_u32(header.message_type) {
 			Some(MessageType::PingRequest) => {
-				self.receive_message_body::<api::PingRequest>(&header)?;
+				self.receive_message_body::<api::PingRequest>(header)?;
 				self.send_message(MessageType::PingResponse, &api::PingResponse::new())?;
 				Ok(true)
 			}
 			Some(MessageType::DisconnectRequest) => {
-				self.receive_message_body::<api::DisconnectRequest>(&header)?;
+				self.receive_message_body::<api::DisconnectRequest>(header)?;
 				self.send_message(
 					MessageType::DisconnectResponse,
 					&api::DisconnectResponse::new(),
@@ -120,40 +126,42 @@ impl<'a> Connection<'a> {
 				Ok(true)
 			}
 			Some(MessageType::GetTimeRequest) => {
-				self.receive_message_body::<api::GetTimeRequest>(&header)?;
+				self.receive_message_body::<api::GetTimeRequest>(header)?;
 				let mut res = api::GetTimeResponse::new();
 				res.epoch_seconds =
-					(SystemTime::now().duration_since(UNIX_EPOCH)?).as_secs() as u32;
+					u32::try_from(SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs())?;
 				self.send_message(MessageType::GetTimeResponse, &res)?;
 				Ok(true)
 			}
 
 			Some(MessageType::SensorStateResponse) => {
-				let ssr: api::SensorStateResponse = self.receive_message_body(&header)?;
+				let ssr: api::SensorStateResponse = self.receive_message_body(header)?;
 				self.states.insert(ssr.key, State::Measurement(ssr.state));
 				Ok(true)
 			}
 
 			Some(MessageType::BinarySensorStateResponse) => {
-				let ssr: api::BinarySensorStateResponse = self.receive_message_body(&header)?;
+				let ssr: api::BinarySensorStateResponse = self.receive_message_body(header)?;
 				self.states.insert(ssr.key, State::Binary(ssr.state));
 				Ok(true)
 			}
 
 			Some(MessageType::TextSensorStateResponse) => {
-				let ssr: api::TextSensorStateResponse = self.receive_message_body(&header)?;
+				let ssr: api::TextSensorStateResponse = self.receive_message_body(header)?;
 				self.states.insert(ssr.key, State::Text(ssr.state));
 				Ok(true)
 			}
 
 			// State updates
-			Some(MessageType::CoverStateResponse)
-			| Some(MessageType::FanStateResponse)
-			| Some(MessageType::LightStateResponse)
-			| Some(MessageType::SwitchStateResponse)
-			| Some(MessageType::ClimateStateResponse)
-			| Some(MessageType::NumberStateResponse)
-			| Some(MessageType::SelectStateResponse) => {
+			Some(
+				MessageType::CoverStateResponse
+				| MessageType::FanStateResponse
+				| MessageType::LightStateResponse
+				| MessageType::SwitchStateResponse
+				| MessageType::ClimateStateResponse
+				| MessageType::NumberStateResponse
+				| MessageType::SelectStateResponse,
+			) => {
 				// Skip these messages
 				println!("Receive state update: {:?}", header.message_type);
 				self.ignore_bytes(header.message_length)?;
@@ -169,7 +177,7 @@ impl<'a> Connection<'a> {
 
 	pub(crate) fn receive_message_header(&mut self) -> Result<MessageHeader, EspHomeError> {
 		loop {
-			let mut zero = [0u8; 1];
+			let mut zero = [MaybeUninit::uninit(); 1];
 			self.cis.read_exact(&mut zero)?;
 			let len = self.cis.read_raw_varint32()?;
 			let tp = self.cis.read_raw_varint32()?;
@@ -202,7 +210,7 @@ impl<'a> Connection<'a> {
 
 	pub fn connect(mut self) -> Result<Device<'a>, EspHomeError> {
 		let mut hr = api::HelloRequest::new();
-		hr.set_client_info("esphome.rs".to_string());
+		hr.client_info = "esphome.rs".to_string();
 		self.send_message(MessageType::HelloRequest, &hr)?;
 
 		let hr: HelloResponse = self.receive_message(MessageType::HelloResponse)?;

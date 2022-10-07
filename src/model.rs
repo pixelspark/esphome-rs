@@ -16,10 +16,13 @@ pub enum EspHomeError {
 	Io(#[from] std::io::Error),
 
 	#[error("Protobuf error: {0}")]
-	Protobuf(#[from] protobuf::ProtobufError),
+	Protobuf(#[from] protobuf::Error),
 
 	#[error("System time error: {0}")]
 	SystemTime(#[from] std::time::SystemTimeError),
+
+	#[error("Cast error: {0}")]
+	TryFromIntError(#[from] std::num::TryFromIntError),
 }
 
 #[derive(Debug, Clone)]
@@ -30,18 +33,21 @@ pub enum State {
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 pub struct ExtendedInfo {
 	pub(crate) object_id: String,
 	pub(crate) unique_id: String,
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 pub struct EntityInfo {
 	pub(crate) name: String,
 	pub(crate) key: u32,
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 pub struct Entity {
 	info: EntityInfo,
 	kind: EntityKind,
@@ -52,6 +58,7 @@ impl Entity {
 		Entity { info, kind }
 	}
 
+	#[must_use]
 	pub fn key(&self) -> u32 {
 		self.info.key
 	}
